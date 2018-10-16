@@ -106,7 +106,7 @@ public class AreaTest {
 		// default test
 		testSubject = createTestSubject();
 		result = testSubject.isActive();
-		assertEquals(this.type, result);
+		assertEquals(this.active, result);
 	}
 
 	@Test
@@ -117,7 +117,7 @@ public class AreaTest {
 		testSubject = createEmptyTestSubject();
 		testSubject.setisActive(this.active);
 		result = testSubject.isActive();
-		assertEquals(this.type, result);
+		assertEquals(this.active, result);
 	}
 
 	@Test

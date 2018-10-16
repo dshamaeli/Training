@@ -86,7 +86,7 @@ public class Area {
 	 * @return type of the area
 	 */
 	public AreaType getType() {
-		return type;
+		return this.type;
 	}
 
 	/**
