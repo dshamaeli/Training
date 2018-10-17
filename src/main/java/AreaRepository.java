@@ -1,27 +1,30 @@
-/**
- * 
- */
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-/**
- * @author daniel.shamaeli
- *
- */
-public interface AreaRepository {
+public class AreaRepository implements AreaRepositoryInterface {
 
-	/**
-	 * gives a list of all Areas
-	 * 
-	 * @return a list of all Areas
-	 */
-	public List<Area> getAllAreas();
+	// lists
+	private List<Area> areaList = new ArrayList<Area>();
 
-	/**
-	 * gives a list of only Active Areas
-	 * 
-	 * @return a list of only Active Areas
-	 */
-	public List<Area> getActiveAreas();
+	@Override
+	public List<Area> getAllAreas() {
 
+		return this.areaList;
+	}
+
+	@Override
+	public List<Area> getActiveAreas() {
+		ArrayList<Area> list = new ArrayList<>();
+		Iterator<Area> iterator = areaList.iterator();
+		while (iterator.hasNext()) {
+			Area area = iterator.next();
+			if (area.isActive()) {
+				list.add(area);
+			} else
+				return null;
+		}
+		return list;
+	}
 }

@@ -2,6 +2,9 @@
  * 
  */
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -16,6 +19,7 @@ import java.util.List;
  */
 public class Area {
 
+	private static final Logger LOG = LoggerFactory.getLogger(Area.class);
 	private Integer id;
 	private String name;
 	private AreaType type;
@@ -155,8 +159,7 @@ public class Area {
 			Date date = summary.getDate();
 			if (date.after(start) && date.before(end)) {
 				list.add(summary);
-			} else
-				System.out.println("Error\n");
+			}
 		}
 		return list;
 	}
