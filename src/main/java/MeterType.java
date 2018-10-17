@@ -34,7 +34,7 @@ public class MeterType {
 	 * @return name of the meter type
 	 */
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	/**

@@ -83,13 +83,6 @@ public class Meter extends MeterType {
 		this.active = active;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public Date getInstallDate() {
 		return installDate;

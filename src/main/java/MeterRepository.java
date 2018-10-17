@@ -25,7 +25,7 @@ public class MeterRepository implements MeterRepositoryInterface {
 	@Override
 	public List<Meter> getAllMeters(Area area) {
 		Meter meter;
-		List<Area> parentAreas = new ArrayList<>();
+		List<Area> parentAreas;
 		List<Meter> list = new ArrayList<>();
 		Iterator<Meter> iterator = meterList.iterator();
 		while (iterator.hasNext()) {

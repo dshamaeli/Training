@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class Area {
 
-	private static final Logger LOG = LoggerFactory.getLogger(Area.class);
+//	private static final Logger LOG = LoggerFactory.getLogger(Area.class);
 	private Integer id;
 	private String name;
 	private AreaType type;
@@ -52,7 +52,7 @@ public class Area {
 	 * 
 	 * @return id
 	 */
-	public Integer getId() {
+	private Integer getId() {
 		return id;
 	}
 

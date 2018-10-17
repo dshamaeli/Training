@@ -22,8 +22,7 @@ public class AreaRepository implements AreaRepositoryInterface {
 			Area area = iterator.next();
 			if (area.isActive()) {
 				list.add(area);
-			} else
-				return null;
+			}
 		}
 		return list;
 	}

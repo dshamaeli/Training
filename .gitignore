@@ -35,3 +35,4 @@ src/test/resources/
 /.idea/workspace.xml
 /out/
 /.gradle/
+/.idea/saveactions_settings.xml

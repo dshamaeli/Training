@@ -15,13 +15,13 @@ public interface AreaRepositoryInterface {
 	 * 
 	 * @return a list of all Areas
 	 */
-	public List<Area> getAllAreas();
+	List<Area> getAllAreas();
 
 	/**
 	 * gives a list of only Active Areas
 	 * 
 	 * @return a list of only Active Areas
 	 */
-	public List<Area> getActiveAreas();
+	List<Area> getActiveAreas();
 
 }
