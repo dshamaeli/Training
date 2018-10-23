@@ -28,11 +28,10 @@ hs_err_pid*
 .gradle/4.10.2/
 .gradle/4.8/fileContent/
 .gradle/4.8/fileHashes/resourceHashesCache.bin
-.gradle/vcs-1/
-src/main/resources/
-src/test/resources/
+.gradle/vcs-1/bu
 /build/
 /.idea/workspace.xml
 /out/
 /.gradle/
 /.idea/saveactions_settings.xml
+/.idea/sonarlint/

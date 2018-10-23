@@ -178,6 +178,7 @@ public class AreaTest {
         testSubject = createTestSubject();
         obj = null;
         result = testSubject.equals(obj);
+        LOG.info("hello");
         Assert.assertEquals(false, result);
     }
 
