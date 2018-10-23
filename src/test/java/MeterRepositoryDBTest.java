@@ -10,11 +10,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class MeterRepositoryDBTest {
     private static final Logger LOG = LoggerFactory.getLogger(AreaTest.class);
-    final String query = "select data_date, value from meter_data,meter where parent_id = ";
-    private BasicDataSource db = MeterRepositoryDB.createDataSource();
+    //    final String query = "select data_date, value from meter_data,meter where parent_id = 123;";
+    final String query = "select meter_id from NB.Meter where install_date < TO_TIMESTAMP('10-SEP-0214:10:10.123','DD-MON-RRHH24:MI:SS.FF')";
+    private BasicDataSource db = Database.createDataSource();
 
 
     @Before
@@ -35,16 +38,11 @@ public class MeterRepositoryDBTest {
     }
 
     @Test
-    public void createDataSource() {
-        try {
-            Connection conn = db.getConnection();
-            Statement stm = conn.createStatement();
-            ResultSet res = stm.executeQuery(query);
-            System.out.println(res.next());
-
-        } catch (SQLException e) {
-
-        }
+    public void createDataSource() throws SQLException {
+        Connection conn = db.getConnection();
+        Statement statement = conn.createStatement();
+        ResultSet result = statement.executeQuery(query);
+        assertEquals(2, result.getClass());
 
     }
 }
