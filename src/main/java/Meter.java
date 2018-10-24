@@ -135,7 +135,7 @@ public class Meter extends MeterType {
 
     @Override
     public String toString() {
-        return super.toString() + "\nid: " + this.id + "\nname: " + this.name + "\ninstallation date: "
+        return super.toString() + "\nid: " + this.id + "\nname: " + this.name + "\ntype: " + meteTypeId + "\ninstallation date: "
                 + this.installDate + "\nStatus: " + this.active + "\nmeasurementDataType: " + this.measurementDataType;
     }
 

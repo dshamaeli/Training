@@ -9,15 +9,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
 
 
 public class MeterRepositoryDBTest {
     private static final Logger LOG = LoggerFactory.getLogger(AreaTest.class);
-    //    final String query = "select data_date, value from meter_data,meter where parent_id = 123;";
-    final String query = "select meter_id from Meter where install_date < TO_TIMESTAMP('10-SEP-2018 14:10:10.123','DD-MON-RRHH24:MI:SS.FF')";
-
 
     @Before
     public void setUp() throws Exception {
@@ -36,10 +36,10 @@ public class MeterRepositoryDBTest {
     }
 
     @Test
-    public void createDataSource() throws SQLException {
-        Statement statement = Database.getStatement();
-        ResultSet result = statement.executeQuery(query);
-
-        assertEquals(2, result.next());
+    public void createDataSource() throws SQLException, ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy'T'HH:mm:ssZ");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        MeterRepositoryDB meterDB = new MeterRepositoryDB();
+        meterDB.getOldMeter(sdf.parse("10-10-2018T14:10:10-0000"));
     }
 }
