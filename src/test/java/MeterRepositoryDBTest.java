@@ -16,8 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class MeterRepositoryDBTest {
     private static final Logger LOG = LoggerFactory.getLogger(AreaTest.class);
     //    final String query = "select data_date, value from meter_data,meter where parent_id = 123;";
-    final String query = "select meter_id from NB.Meter where install_date < TO_TIMESTAMP('10-SEP-0214:10:10.123','DD-MON-RRHH24:MI:SS.FF')";
-    private BasicDataSource db = Database.createDataSource();
+    final String query = "select meter_id from Meter where install_date < TO_TIMESTAMP('10-SEP-2018 14:10:10.123','DD-MON-RRHH24:MI:SS.FF')";
 
 
     @Before
@@ -34,15 +33,13 @@ public class MeterRepositoryDBTest {
 
     @After
     public void tearDown() throws Exception {
-        db.close();
     }
 
     @Test
     public void createDataSource() throws SQLException {
-        Connection conn = db.getConnection();
-        Statement statement = conn.createStatement();
+        Statement statement = Database.getStatement();
         ResultSet result = statement.executeQuery(query);
-        assertEquals(2, result.getClass());
 
+        assertEquals(2, result.next());
     }
 }

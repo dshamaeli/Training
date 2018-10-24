@@ -24,6 +24,7 @@ public class MeterRepositoryTest {
         Double[] maxSize = {50.00, 650.00, 750.00};
         Double[] maxFlow = {50.00, 100.00, 100.00};
         Double[] maxPressure = {20.00, 100.00, 100.00};
+        Integer[] type_id = {123, 456, 789};
         String[] name = {" Quality Area 1 Meter", "Hydraulic Area 1 Meter", "Operationl Area 1 Meter"};
         Date[] installDate = {dateFormat.parse("01-10-2018 12:02:22"), dateFormat.parse("10-10-2018 08:46:11"),
                 dateFormat.parse("05-10-2018 22:59:01")};
@@ -39,7 +40,7 @@ public class MeterRepositoryTest {
 
         for (int i = 0; i < testMeters.length; i++) {
 
-            this.testMeters[i] = new Meter(id[i], typeName[i], maxSize[i], maxFlow[i], maxPressure[i], name[i],
+            this.testMeters[i] = new Meter(id[i], name[i], type_id[i],
                     installDate[i], active[i], measurementDataType[i]);
             this.parentAreas[i] = new Area(idArea[i], nameArea[i], type[i], isActive[i]);
         }
