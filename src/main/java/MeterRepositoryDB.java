@@ -35,10 +35,10 @@ public class MeterRepositoryDB implements MeterRepositoryInterface {
     @Override
     public List<Meter> getOldMeter(Date date) {
         System.out.println(date);
-//        String query = "select meter_id from Meter where install_date < TO_TIMESTAMP('10-SEP-2018 14:10:10.123','DD-MON-RRHH24:MI:SS.FF')";
-//        String query = "select meter_id from meter where install_date < TO_TIMESTAMP(" + date + ",'DD-MON-RRHH24:MI:SS.FF');";
-//        String query = "select meter_id from meter where install_date <" + date + ";";
-        String query = "select * from meter";
+        String query = "select * from Meter where install_date < to_date('10-10-2018 10:10:10','dd-mm-yyyy HH:MI:SS')";
+//        String query = "select meter_id from meter where install_date < TO_TIMESTAMP(" + date + ",'DD-MON-RRHH24:MI:SS.FF')";
+//        String query = "select meter_id from meter where install_date <" + date;
+//        String query = "select * from meter";
         try {
             result = statement.executeQuery(query);
             while (result.next()) {
