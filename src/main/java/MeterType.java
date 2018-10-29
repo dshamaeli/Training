@@ -6,7 +6,10 @@
  * @author daniel.shamaeli
  */
 public class MeterType {
-    private String name;
+
+
+    private Integer meterTypeId;
+    private String meterTypeName;
     private Double maxSize;
     private Double maxFlow;
     private Double maxPressure;
@@ -16,16 +19,24 @@ public class MeterType {
     }
 
     /**
-     * @param name        display name for this meter type
-     * @param maxSize     maximum size of the meter in mm between 0 and 1000
-     * @param maxFlow     maximum flow permitted in l/s between 1 and 100
-     * @param maxPressure maximum pressure permitted in m between 1 and 100
+     * @param meterTypeName display Name for this meter type
+     * @param maxSize       maximum size of the meter in mm between 0 and 1000
+     * @param maxFlow       maximum flow permitted in l/s between 1 and 100
+     * @param maxPressure   maximum pressure permitted in m between 1 and 100
      */
-    public MeterType(String name, Double maxSize, Double maxFlow, Double maxPressure) {
-        this.name = name;
+    public MeterType(String meterTypeName, Double maxSize, Double maxFlow, Double maxPressure) {
+        this.meterTypeName = meterTypeName;
         this.maxSize = maxSize;
         this.maxFlow = maxFlow;
         this.maxPressure = maxPressure;
+    }
+
+    public Integer getMeterTypeId() {
+        return meterTypeId;
+    }
+
+    public void setMeterTypeId(Integer meterTypeId) {
+        this.meterTypeId = meterTypeId;
     }
 
     /**
@@ -34,16 +45,16 @@ public class MeterType {
      * @return name of the meter type
      */
     public String getName() {
-        return this.name;
+        return this.meterTypeName;
     }
 
     /**
      * sets display name for this meter type
      *
-     * @param name display name for this meter type
+     * @param meterTypeName display name for this meter type
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String meterTypeName) {
+        this.meterTypeName = meterTypeName;
     }
 
     /**
@@ -100,7 +111,7 @@ public class MeterType {
 
     @Override
     public String toString() {
-        return "\ntype name: " + this.name + "\nMaximum size: " + this.maxSize + "\nMaximum flow: " + this.maxFlow
+        return "\ntype meterTypeName: " + this.meterTypeName + "\nMaximum size: " + this.maxSize + "\nMaximum flow: " + this.maxFlow
                 + "\nMaximum pressure: " + this.maxPressure;
     }
 

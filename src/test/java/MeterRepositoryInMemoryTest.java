@@ -9,13 +9,13 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MeterRepositoryTest {
+public class MeterRepositoryInMemoryTest {
 
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
     private Meter[] testMeters = new Meter[3];
     private Area[] parentAreas = new Area[3];
 
-    //	public MeterRepositoryTest() throws ParseException {
+    //	public MeterRepositoryInMemoryTest() throws ParseException {
     @Before
     public void setUp() throws Exception {
         // Meter info
@@ -46,8 +46,8 @@ public class MeterRepositoryTest {
         }
     }
 
-    private MeterRepository createTestSubject() {
-        MeterRepository meterRepository = new MeterRepository();
+    private MeterRepositoryInMemory createTestSubject() {
+        MeterRepositoryInMemory meterRepository = new MeterRepositoryInMemory();
         for (int i = 0; i < this.testMeters.length; i++) {
             meterRepository.addMeter(this.testMeters[i]);
         }
@@ -57,7 +57,7 @@ public class MeterRepositoryTest {
     // @MethodRef(name = "getAllMeters", signature = "(QArea;)QList<QMeter;>;")
     // @Test
     // public void testGetAllMeters() throws Exception {
-    // MeterRepository testSubject;
+    // MeterRepositoryInMemory testSubject;
     // Area area = null;
     // List<Meter> result;
     //
@@ -70,7 +70,7 @@ public class MeterRepositoryTest {
     // "(QMeter;QDate;QDate;)QList<QMeterData;>;")
     // @Test
     // public void testGetDataByDate() throws Exception {
-    // MeterRepository testSubject;
+    // MeterRepositoryInMemory testSubject;
     // Meter meter = null;
     // Date start = null;
     // Date end = null;
@@ -84,7 +84,7 @@ public class MeterRepositoryTest {
     @Test
     public void testGetOldMeter() throws Exception {
         Date date = this.dateFormat.parse("09-10-2018 14:07:30");
-        MeterRepository testSubject;
+        MeterRepositoryInMemory testSubject;
         List<Meter> result;
 
         // default test

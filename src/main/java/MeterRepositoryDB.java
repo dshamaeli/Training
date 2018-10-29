@@ -2,14 +2,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 /**
  * @author Daniel.shamaeli
  */
-public class MeterRepositoryDB implements MeterRepositoryInterface {
+public class MeterRepositoryDB implements MeterRepository {
 
     private Statement statement = Database.getStatement();
     private ResultSet result = null;

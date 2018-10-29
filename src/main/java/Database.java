@@ -10,7 +10,8 @@ public class Database {
         dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
         dataSource.setUsername("nb");
         dataSource.setPassword("NB");
-        dataSource.setUrl("jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5");
+//        dataSource.setUrl("jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5");
+        dataSource.setUrl("jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04");
         return dataSource;
     }
 

@@ -1,8 +1,4 @@
 /**
- *
- */
-
-/**
  * @author daniel.shamaeli
  */
 public enum MeasurementDataType {

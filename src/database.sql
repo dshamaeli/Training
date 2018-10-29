@@ -1,23 +1,17 @@
 -- Create table
+
 create table METERTYPE
 (
   meter_type_id NUMBER not null,
-  type_name     VARCHAR2(40 CHAR) not null,
+  type_name     VARCHAR2(40 CHAR) constraint metertype_nn$1 not null,
   max_size      NUMBER,
   max_flow      NUMBER,
   min_flow      NUMBER
 )
 tablespace NBSYSSML
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    minextents 1
-    maxextents unlimited
-  );
+
+comment on table metertype is '';
+
 -- Add comments to the columns
 comment on column METERTYPE.max_size
   is '0-1000';

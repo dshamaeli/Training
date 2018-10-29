@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +22,6 @@ public class Meter extends MeterType {
     private List<Area> areaList = new ArrayList<>();
 
     public Meter() {
-        super();
 
 
     }
