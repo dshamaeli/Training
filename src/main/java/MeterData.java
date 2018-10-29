@@ -1,4 +1,3 @@
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -8,7 +7,7 @@ import java.util.Date;
  * @author daniel.shamaeli
  */
 public class MeterData {
-    private Integer parent;
+    private Meter parent;
     private Date date;
     private Double value;
 
@@ -16,8 +15,7 @@ public class MeterData {
      * @param parent Id of meter that owns the data
      * @param value  recorded numeric value of up to 3 decimal places
      */
-    public MeterData(Integer parent, Double value) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
+    public MeterData(Meter parent, Double value) {
         this.parent = parent;
         this.value = value;
         this.date = new Date();

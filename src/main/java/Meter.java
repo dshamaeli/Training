@@ -96,7 +96,7 @@ public class Meter {
     }
 
     public void addData(Double value) {
-        MeterData data = new MeterData(this.id, value);
+        MeterData data = new MeterData(this, value);
         dataList.add(data);
     }
 

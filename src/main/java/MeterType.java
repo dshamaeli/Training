@@ -14,10 +14,6 @@ public class MeterType {
     private Double maxFlow;
     private Double maxPressure;
 
-    public MeterType() {
-
-    }
-
 
     /**
      * @param meterTypeId   ID of meter type
@@ -50,7 +46,7 @@ public class MeterType {
      *
      * @return name of the meter type
      */
-    public String getName() {
+    public String getMeterTypeName() {
         return this.meterTypeName;
     }
 
@@ -59,7 +55,7 @@ public class MeterType {
      *
      * @param meterTypeName display name for this meter type
      */
-    public void setName(String meterTypeName) {
+    public void setMeterTypeName(String meterTypeName) {
         this.meterTypeName = meterTypeName;
     }
 
