@@ -3,5 +3,5 @@ import java.util.List;
 
 public interface AreaSummaryRepository {
 
-    public List<AreaSummary> getSummaryByDate(Area area, Date start, Date end);
+    List<AreaSummary> getSummaryByDate(Area area, Date start, Date end);
 }

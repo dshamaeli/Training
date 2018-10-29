@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -11,63 +9,63 @@ import java.util.List;
  */
 public class Area {
 
-    private Integer id;
-    private String name;
-    private AreaType type;
+    private Integer areaId;
+    private String areaName;
+    private AreaType areaType;
     private Boolean isActive;
-    private List<AreaSummary> summaryList = new ArrayList<>();
     private List<Meter> metersList = new ArrayList<>();
 
     /**
      * Generates an area. An area is a geographical region used to logically
      * group part of a water network.
      *
-     * @param id       Unique number that identifies the area.
-     * @param name     Display name for this area.
-     * @param type     Shows the area type. One of Hydraulic, Operational or Quality.
+     * @param areaId   Unique number that identifies the area.
+     * @param areaName Display name for this area.
+     * @param areaType Shows the area type. One of Hydraulic, Operational or Quality.
      * @param isActive flag to show if the area is active(true) or not(False).
      */
-    public Area(Integer id, String name, AreaType type, Boolean isActive) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
+    public Area(Integer areaId, String areaName, AreaType areaType, Boolean isActive) {
+        this.areaId = areaId;
+        this.areaName = areaName;
+        this.areaType = areaType;
         this.isActive = isActive;
     }
 
     /**
      * returns ID of the area
      *
-     * @return id
+     * @return areaId
      */
     public Integer getId() {
-        return id;
+        return areaId;
     }
 
     /**
      * set ID of the Area
      *
-     * @param id
+     * @param areaId ID of the Area
      */
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer areaId) {
+        this.areaId = areaId;
     }
+
 
     /**
      * returns name of the area
      *
-     * @return
+     * @return areaName
      */
     public String getName() {
-        return name;
+        return areaName;
     }
 
     /**
      * sets name of the area
      *
-     * @param name of the area
+     * @param areaName of the area
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String areaName) {
+        this.areaName = areaName;
     }
 
     /**
@@ -76,16 +74,16 @@ public class Area {
      * @return type of the area
      */
     public AreaType getType() {
-        return this.type;
+        return this.areaType;
     }
 
     /**
      * sets type of the area
      *
-     * @param type one of Hydraulic, Operational or Quality
+     * @param areaType one of Hydraulic, Operational or Quality
      */
-    public void setType(AreaType type) {
-        this.type = type;
+    public void setType(AreaType areaType) {
+        this.areaType = areaType;
     }
 
     /**
@@ -106,47 +104,20 @@ public class Area {
         this.isActive = isActive;
     }
 
-    /**
-     * Add summary to the area
-     *
-     * @param total
-     * @param max
-     * @param min
-     * @see AreaSummary
-     */
-    public void addSummary(Double total, Double max, Double min) {
-        AreaSummary areaSummary = new AreaSummary(this.id, total, max, min);
-        summaryList.add(areaSummary);
-    }
-
-    public List<AreaSummary> getSummary() {
-        return this.summaryList;
+    public void addmeter(Meter meter) {
+        metersList.add(meter);
     }
 
     /**
-     * gives a list of Area Data for an Area between a provided start and end
-     * date
-     *
-     * @param start start date of the summary
-     * @param end   end date of the summary
-     * @return list of Area Data
+     * @return List<Meter> a list of Meters assigned to this Area
      */
-    public List<AreaSummary> getSummary(Date start, Date end) {
-        List<AreaSummary> list = new ArrayList<>();
-        Iterator<AreaSummary> iterator = summaryList.iterator();
-        while (iterator.hasNext()) {
-            AreaSummary summary = iterator.next();
-            Date date = summary.getDate();
-            if (date.after(start) && date.before(end)) {
-                list.add(summary);
-            }
-        }
-        return list;
+    public List<Meter> getAllMeters() {
+        return this.metersList;
     }
 
     @Override
     public int hashCode() {
-        return this.id;
+        return this.areaId;
     }
 
     @Override
@@ -162,12 +133,9 @@ public class Area {
 
     @Override
     public String toString() {
-        return super.toString() + "\nID: " + this.id + "\nName: " + this.name + "\nArea Type:" + this.type
-                + "\nActivation Status: " + this.isActive;
+        return super.toString() + "\nID: " + this.areaId + "\nName: " + this.areaName + "\nArea Type:" + this.areaType //NON-NLS
+                + "\nActivation Status: " + this.isActive; //NON-NLS
     }
 
-    public List<Meter> getAllMeters() {
-        return this.metersList;
-    }
 
 }

@@ -8,12 +8,10 @@ import java.util.List;
  *
  * @author daniel.shamaeli
  */
-public class Meter extends MeterType {
+public class Meter {
 
     private Integer id;
     private String name;
-
-
     private Integer meteTypeId;
     private Date installDate;
     private Boolean active;
@@ -22,8 +20,6 @@ public class Meter extends MeterType {
     private List<Area> areaList = new ArrayList<>();
 
     public Meter() {
-
-
     }
 
     /**
@@ -42,6 +38,16 @@ public class Meter extends MeterType {
                  Date installDate, Boolean active, MeasurementDataType measurementDataType) {
         this.id = id;
         this.meteTypeId = meterTypeId;
+        this.name = name;
+        this.installDate = installDate;
+        this.active = active;
+        this.measurementDataType = measurementDataType;
+    }
+
+    public Meter(int id, String name, MeterType meterType,
+                 Date installDate, Boolean active, MeasurementDataType measurementDataType) {
+        this.id = id;
+        this.meteTypeId = meterType.getMeterTypeId();
         this.name = name;
         this.installDate = installDate;
         this.active = active;

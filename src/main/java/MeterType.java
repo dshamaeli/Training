@@ -18,19 +18,25 @@ public class MeterType {
 
     }
 
+
     /**
+     * @param meterTypeId   ID of meter type
      * @param meterTypeName display Name for this meter type
      * @param maxSize       maximum size of the meter in mm between 0 and 1000
      * @param maxFlow       maximum flow permitted in l/s between 1 and 100
      * @param maxPressure   maximum pressure permitted in m between 1 and 100
      */
-    public MeterType(String meterTypeName, Double maxSize, Double maxFlow, Double maxPressure) {
+    public MeterType(Integer meterTypeId, String meterTypeName, Double maxSize, Double maxFlow, Double maxPressure) {
+        this.meterTypeId = meterTypeId;
         this.meterTypeName = meterTypeName;
         this.maxSize = maxSize;
         this.maxFlow = maxFlow;
         this.maxPressure = maxPressure;
     }
 
+    /**
+     * @return meterTypeId ID of meter type
+     */
     public Integer getMeterTypeId() {
         return meterTypeId;
     }

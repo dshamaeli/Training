@@ -1,3 +1,6 @@
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,14 +11,14 @@ import java.util.List;
 /**
  * @author Daniel.shamaeli
  */
-public class MeterRepositoryDB implements MeterRepository {
-
+public class MeterRepositoryJDBC implements MeterRepository {
+    private static final Logger LOG = LoggerFactory.getLogger(MeterRepositoryJDBC.class);
     private Statement statement = Database.getStatement();
     private ResultSet result = null;
     private List<Meter> list = new ArrayList<>();
 
 
-    public MeterRepositoryDB() throws SQLException {
+    public MeterRepositoryJDBC() throws SQLException {
     }
 
     @Override
@@ -33,7 +36,7 @@ public class MeterRepositoryDB implements MeterRepository {
 
     @Override
     public List<Meter> getOldMeter(Date date) {
-        System.out.println(date);
+        List<Meter> list = new ArrayList<>();
         String query = "select * from Meter where install_date < to_date('10-10-2018 10:10:10','dd-mm-yyyy HH:MI:SS')";
 //        String query = "select meter_id from meter where install_date < TO_TIMESTAMP(" + date + ",'DD-MON-RRHH24:MI:SS.FF')";
 //        String query = "select meter_id from meter where install_date <" + date;
@@ -49,11 +52,12 @@ public class MeterRepositoryDB implements MeterRepository {
                 String type = result.getString("measurment_data_type");
                 MeasurementDataType measurement_data_type = MeasurementDataType.convert(type);
                 Meter meter = new Meter(meter_id, name, meter_type_id, install_date, is_active, measurement_data_type);
-                System.out.println(meter);
+                LOG.info(meter.toString());
+                list.add(meter);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error", e);
         }
-        return null;
+        return list;
     }
 }

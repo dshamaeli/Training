@@ -1,14 +1,12 @@
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Date;
-import java.util.List;
-
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class AreaTest {
     private static final Logger LOG = LoggerFactory.getLogger(AreaTest.class);
@@ -16,9 +14,6 @@ public class AreaTest {
     private String name = "Quality Area 1";
     private AreaType type = AreaType.QUALITY;
     private boolean active = true;
-    private Double total = 221.022;
-    private Double min = 41.006;
-    private Double max = 46.222;
 
     private Area createTestSubject() {
         return new Area(id, name, type, active);
@@ -106,8 +101,6 @@ public class AreaTest {
     public void testIsActive() throws Exception {
         Area testSubject;
         Boolean result;
-
-        // default test
         testSubject = createTestSubject();
         result = testSubject.isActive();
         assertEquals(this.active, result);
@@ -117,55 +110,20 @@ public class AreaTest {
     public void testSetisActive() throws Exception {
         Area testSubject;
         Boolean result;
-        // default test
         testSubject = createEmptyTestSubject();
         testSubject.setisActive(this.active);
         result = testSubject.isActive();
         assertEquals(this.active, result);
     }
 
-    @Test
-    public void testAddSummary() throws Exception {
-        Area testSubject;
-        Double total = this.total;
-        Double max = this.max;
-        Double min = this.min;
-
-        // default test
-        testSubject = createTestSubject();
-        testSubject.addSummary(total, max, min);
-    }
-
-    @Test
-    public void testGetSummary() throws Exception {
-        Area testSubject;
-        List<AreaSummary> result;
-
-        // default test
-        testSubject = createTestSubject();
-        result = testSubject.getSummary();
-    }
-
-    @Test
-    public void testGetSummary_1() throws Exception {
-        Area testSubject;
-        Date start = null;
-        Date end = null;
-        List<AreaSummary> result;
-
-        // default test
-        testSubject = createTestSubject();
-        result = testSubject.getSummary(start, end);
-    }
 
     @Test
     public void testHashCode() throws Exception {
         Area testSubject;
-        int result;
-
-        // default test
+        Integer result;
         testSubject = createTestSubject();
         result = testSubject.hashCode();
+        assertEquals(this.id, result);
     }
 
     @Test
@@ -173,12 +131,9 @@ public class AreaTest {
         Area testSubject;
         Object obj = null;
         boolean result;
-
-        // test 1
         testSubject = createTestSubject();
-        obj = null;
         result = testSubject.equals(obj);
-        LOG.info("hello");
+        LOG.debug("hello");
         Assert.assertEquals(false, result);
     }
 
@@ -190,6 +145,15 @@ public class AreaTest {
         // default test
         testSubject = createTestSubject();
         result = testSubject.toString();
+        System.out.println(result);
+    }
+
+    @Test
+    public void testAddmeter() throws Exception {
+        Area testSubject;
+        Meter meter = new Meter();
+        testSubject = createTestSubject();
+        testSubject.addmeter(meter);
     }
 
     @Test

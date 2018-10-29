@@ -1,22 +1,16 @@
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
-import static org.junit.Assert.assertEquals;
 
-
-public class MeterRepositoryDBTest {
+public class MeterRepositoryJDBCTest {
     private static final Logger LOG = LoggerFactory.getLogger(AreaTest.class);
 
     @Before
@@ -39,7 +33,7 @@ public class MeterRepositoryDBTest {
     public void createDataSource() throws SQLException, ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy'T'HH:mm:ssZ");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-        MeterRepositoryDB meterDB = new MeterRepositoryDB();
+        MeterRepositoryJDBC meterDB = new MeterRepositoryJDBC();
         meterDB.getOldMeter(sdf.parse("10-10-2018T14:10:10-0000"));
     }
 }

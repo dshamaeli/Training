@@ -1,13 +1,12 @@
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class MeterRepositoryInMemoryTest {
 
@@ -54,32 +53,6 @@ public class MeterRepositoryInMemoryTest {
         return meterRepository;
     }
 
-    // @MethodRef(name = "getAllMeters", signature = "(QArea;)QList<QMeter;>;")
-    // @Test
-    // public void testGetAllMeters() throws Exception {
-    // MeterRepositoryInMemory testSubject;
-    // Area area = null;
-    // List<Meter> result;
-    //
-    // // default test
-    // testSubject = createTestSubject();
-    // result = testSubject.getAllMeters(area);
-    // }
-    //
-    // @MethodRef(name = "getDataByDate", signature =
-    // "(QMeter;QDate;QDate;)QList<QMeterData;>;")
-    // @Test
-    // public void testGetDataByDate() throws Exception {
-    // MeterRepositoryInMemory testSubject;
-    // Meter meter = null;
-    // Date start = null;
-    // Date end = null;
-    // List<MeterData> result;
-    //
-    // // default test
-    // testSubject = createTestSubject();
-    // result = testSubject.getDataByDate(meter, start, end);
-    // }
 
     @Test
     public void testGetOldMeter() throws Exception {
