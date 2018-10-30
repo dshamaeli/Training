@@ -16,11 +16,12 @@ public class MeterRepositoryJDBC implements MeterRepository {
     private static final Logger LOG = LoggerFactory.getLogger(MeterRepositoryJDBC.class);
     private static Connection connection;
 
+
     static {
         try {
             connection = Database.getConnection();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("database connection SQLException", e);//NON-NLS
         }
     }
 
@@ -51,7 +52,7 @@ public class MeterRepositoryJDBC implements MeterRepository {
             result = preparedStatement.executeQuery();
             list = generateMeter(result);
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("getAllMeters query SQLException", e);//NON-NLS
         }
 
         return list;
@@ -62,13 +63,13 @@ public class MeterRepositoryJDBC implements MeterRepository {
         ResultSet result;
         java.sql.Date dateSQL = new java.sql.Date(date.getTime());
         List<Meter> list = new ArrayList<>();
-        String query = "select * from meter where install_date < ?";
+        String query = "select * from meter where install_date < ?";//NON-NLS
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setDate(1, dateSQL);
             result = preparedStatement.executeQuery();
             list = generateMeter(result);
         } catch (SQLException e) {
-            LOG.error("Error", e);
+            LOG.error("getOldMeter query SQLException", e);//NON-NLS
         }
         return list;
     }
