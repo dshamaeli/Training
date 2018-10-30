@@ -2,7 +2,6 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Class to connect to JDBC
@@ -15,18 +14,22 @@ public class Database {
         dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");//NON-NLS
         dataSource.setUsername("nb"); //NON-NLS
         dataSource.setPassword("NB");//NON-NLS
-//        dataSource.setUrl("jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5");//NON-NLS
-        dataSource.setUrl("jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04"); //NON-NLS
+        dataSource.setUrl("jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5");//NON-NLS
+//        dataSource.setUrl("jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04"); //NON-NLS
         return dataSource;
+    }
+
+    private Database() {
+
     }
 
     /**
      * @return statement object to query JDBC
      * @throws SQLException throws exception if it fails to connect
      */
-    public static Statement getStatement() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         BasicDataSource db = createDataSource();
-        Connection conn = db.getConnection();
-        return conn.createStatement();
+        Connection connection = db.getConnection();
+        return connection;
     }
 }
