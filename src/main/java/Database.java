@@ -29,7 +29,6 @@ public class Database {
      */
     public static Connection getConnection() throws SQLException {
         BasicDataSource db = createDataSource();
-        Connection connection = db.getConnection();
-        return connection;
+        return db.getConnection();
     }
 }

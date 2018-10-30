@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class MeterDataRepositoryInMemory implements MeterDataRepository {
-    private List<MeterData> areaList = new ArrayList<>();
 
     private Map<Meter, List<MeterData>> map = new HashMap<>();
 

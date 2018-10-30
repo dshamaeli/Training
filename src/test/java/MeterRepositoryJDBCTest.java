@@ -13,25 +13,26 @@ import java.util.List;
 public class MeterRepositoryJDBCTest {
     private static final Logger LOG = LoggerFactory.getLogger(AreaTest.class);
 
+    private MeterRepositoryJDBC meterDB;
+    private List<Meter> result = null;
+
     @Before
     public void setUp() {
-        Integer id = 123;
-        String name = "Quality Area 1";
-        AreaType type = AreaType.QUALITY;
-        Boolean active = true;
-        Double total = 221.022;
-        Double min = 41.006;
-        Double max = 46.222;
-        Area area = new Area(id, name, type, active);
+        meterDB = new MeterRepositoryJDBC();
     }
 
     @Test
-    public void createDataSource() {
+    public void getAllMeters() {
+        Area area = new Area(321, "Quality Area 1", AreaType.QUALITY, true);
+        result = meterDB.getAllMeters(area);
+        System.out.println(result.size());
+        Assert.assertEquals(123, result.get(0).getId());
+    }
+
+    @Test
+    public void getOldMeter() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss.SSSZ");
-        MeterRepositoryJDBC meterDB = null;
-        List<Meter> result = null;
         try {
-            meterDB = new MeterRepositoryJDBC();
             Date date = sdf.parse("01-11-2018T12:11:56.235-0700");
             result = meterDB.getOldMeter(date);
         } catch (ParseException e) {
