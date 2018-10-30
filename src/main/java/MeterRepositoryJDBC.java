@@ -29,12 +29,6 @@ public class MeterRepositoryJDBC implements MeterRepository {
     }
 
     @Override
-    public List<MeterData> getDataByDate(Meter meter, Date start, Date end) {
-        final String query = "select data_date, value from meter_data,meter where parent_id = ";
-        return null;
-    }
-
-    @Override
     public List<Meter> getOldMeter(Date date) {
         List<Meter> list = new ArrayList<>();
         String query = "select * from Meter where install_date < to_date('10-10-2018 10:10:10','dd-mm-yyyy HH:MI:SS')";

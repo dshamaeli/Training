@@ -16,18 +16,20 @@ public class Meter {
     private Date installDate;
     private Boolean active;
     private MeasurementDataType measurementDataType;
-    private List<MeterData> dataList = new ArrayList<>();
     private List<Area> areaList = new ArrayList<>();
-
-    public Meter() {
-    }
 
     /**
      * generates A meter which is a monitored point on a water network recording
      * measured data such as flow, pressure or level information
-     *
+     */
+    public Meter() {
+    }
+
+
+    /**
      * @param id                  Unique number that identifies the meter
      * @param name                display name for this meter
+     * @param meterTypeId         Id of meter type
      * @param installDate         date that meter was installed
      * @param active              Shows whether the meter is active or not
      * @param measurementDataType data type that the meter measures
@@ -44,6 +46,17 @@ public class Meter {
         this.measurementDataType = measurementDataType;
     }
 
+
+    /**
+     * @param id                  Unique number that identifies the meter
+     * @param name                display name for this meter
+     * @param meterType           Id of meter type
+     * @param installDate         date that meter was installed
+     * @param active              Shows whether the meter is active or not
+     * @param measurementDataType data type that the meter measures
+     * @see MeterType
+     * @see MeasurementDataType
+     */
     public Meter(int id, String name, MeterType meterType,
                  Date installDate, Boolean active, MeasurementDataType measurementDataType) {
         this.id = id;
@@ -55,54 +68,76 @@ public class Meter {
     }
 
 
+    /**
+     * @return meter ID
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @param id meter ID
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * @return meter's measurement data type
+     */
     public MeasurementDataType getMeasurementDataType() {
         return measurementDataType;
     }
 
+    /**
+     * @param measurementDataType meter's measurement data type
+     */
     public void setMeasurementDataType(MeasurementDataType measurementDataType) {
         this.measurementDataType = measurementDataType;
     }
 
+    /**
+     * @return meter activation status
+     */
     public Boolean isActive() {
         return active;
     }
 
+    /**
+     * @param active sets meter activation status
+     */
     public void setActive(Boolean active) {
         this.active = active;
     }
 
+    /**
+     * @return meter type
+     */
     public Integer getMeteTypeId() {
         return meteTypeId;
     }
 
+    /**
+     * @param meteTypeId sets meter type ID
+     */
     public void setMeteTypeId(Integer meteTypeId) {
         this.meteTypeId = meteTypeId;
     }
 
+    /**
+     * @return meter's installation date
+     */
     public Date getInstallDate() {
         return installDate;
     }
 
+    /**
+     * @param installDate sets meter installation date
+     */
     public void setInstallDate(Date installDate) {
         this.installDate = installDate;
     }
 
-    public void addData(Double value) {
-        MeterData data = new MeterData(this, value);
-        dataList.add(data);
-    }
-
-    public List<MeterData> getData() {
-        return dataList;
-    }
 
     /**
      * @return List of all parent areas of meter

@@ -9,9 +9,17 @@ create table METERTYPE
   min_flow      NUMBER
 )
 tablespace NBSYSSML
-
-comment on table metertype is '';
-
+pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
 -- Add comments to the columns
 comment on column METERTYPE.max_size
   is '0-1000';

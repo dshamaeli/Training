@@ -79,8 +79,8 @@ public class AreaSummary {
 
     @Override
     public String toString() {
-        return super.toString() + "\nParent ID: " + this.parentId + "\nDate: " + this.date + "\nTotal Flow: "
-                + this.totalFlow + "\nMin Flow: " + this.minFlow + "\nMax Flow: " + this.maxFlow;
+        return super.toString() + "\nParent ID: " + this.parentId + "\nDate: " + this.date + "\nTotal Flow: " //NON-NLS
+                + this.totalFlow + "\nMin Flow: " + this.minFlow + "\nMax Flow: " + this.maxFlow; //NON-NLS
     }
 
 }

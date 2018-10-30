@@ -30,7 +30,7 @@ public class MeterData {
 
     @Override
     public String toString() {
-        return "parent: " + this.parent + "\ndate: " + this.date + "\nvalue: " + this.value;
+        return "parent: " + this.parent + "\ndate: " + this.date + "\nvalue: " + this.value; //NON-NLS
     }
 
 }

@@ -41,22 +41,6 @@ public class MeterRepositoryInMemory implements MeterRepository {
         return list;
     }
 
-    @Override
-    public List<MeterData> getDataByDate(Meter meter, Date start, Date end) {
-        MeterData data;
-        Date date;
-        List<MeterData> list = new ArrayList<>();
-        List<MeterData> dataList = meter.getData();
-        Iterator<MeterData> iterator = dataList.iterator();
-        while (iterator.hasNext()) {
-            data = iterator.next();
-            date = data.getDate();
-            if (date.after(start) && date.before(end)) {
-                list.add(data);
-            }
-        }
-        return list;
-    }
 
     @Override
     public List<Meter> getOldMeter(Date date) {
