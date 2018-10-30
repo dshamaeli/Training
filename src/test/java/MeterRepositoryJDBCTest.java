@@ -25,7 +25,6 @@ public class MeterRepositoryJDBCTest {
     public void getAllMeters() {
         Area area = new Area(321, "Quality Area 1", AreaType.QUALITY, true);
         result = meterDB.getAllMeters(area);
-        System.out.println(result.size());
         Assert.assertEquals(123, result.get(0).getId());
     }
 

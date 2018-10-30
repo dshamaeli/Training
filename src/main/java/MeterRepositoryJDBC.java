@@ -24,6 +24,22 @@ public class MeterRepositoryJDBC implements MeterRepository {
         }
     }
 
+    private List<Meter> generateMeter(ResultSet result) throws SQLException {
+        List<Meter> list = new ArrayList<>();
+        while (result.next()) {
+            Integer meter_id = result.getInt("meter_id");//NON-NLS
+            String name = result.getString("name");//NON-NLS
+            Integer meter_type_id = result.getInt("meter_type_id");//NON-NLS
+            Date install_date = result.getDate("install_date");//NON-NLS
+            Boolean is_active = result.getBoolean("is_active");//NON-NLS
+            String type = result.getString("measurment_data_type");//NON-NLS
+            MeasurementDataType measurement_data_type = MeasurementDataType.convert(type);
+            Meter meter = new Meter(meter_id, name, meter_type_id, install_date, is_active, measurement_data_type);
+            list.add(meter);
+        }
+        return list;
+    }
+
     @Override
     public List<Meter> getAllMeters(Area area) {
         ResultSet result;
@@ -33,17 +49,7 @@ public class MeterRepositoryJDBC implements MeterRepository {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, areaId);
             result = preparedStatement.executeQuery();
-            while (result.next()) {
-                Integer meter_id = result.getInt("meter_id");//NON-NLS
-                String name = result.getString("name");//NON-NLS
-                Integer meter_type_id = result.getInt("meter_type_id");//NON-NLS
-                Date install_date = result.getDate("install_date");//NON-NLS
-                Boolean is_active = result.getBoolean("is_active");//NON-NLS
-                String type = result.getString("measurment_data_type");//NON-NLS
-                MeasurementDataType measurement_data_type = MeasurementDataType.convert(type);
-                Meter meter = new Meter(meter_id, name, meter_type_id, install_date, is_active, measurement_data_type);
-                list.add(meter);
-            }
+            list = generateMeter(result);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -59,19 +65,8 @@ public class MeterRepositoryJDBC implements MeterRepository {
         String query = "select * from meter where install_date < ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setDate(1, dateSQL);
-
             result = preparedStatement.executeQuery();
-            while (result.next()) {
-                Integer meter_id = result.getInt("meter_id");
-                String name = result.getString("name");
-                Integer meter_type_id = result.getInt("meter_type_id");
-                Date install_date = result.getDate("install_date");
-                Boolean is_active = result.getBoolean("is_active");
-                String type = result.getString("measurment_data_type");
-                MeasurementDataType measurement_data_type = MeasurementDataType.convert(type);
-                Meter meter = new Meter(meter_id, name, meter_type_id, install_date, is_active, measurement_data_type);
-                list.add(meter);
-            }
+            list = generateMeter(result);
         } catch (SQLException e) {
             LOG.error("Error", e);
         }
