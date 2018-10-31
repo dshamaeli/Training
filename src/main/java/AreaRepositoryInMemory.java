@@ -15,7 +15,7 @@ public class AreaRepositoryInMemory implements AreaRepository {
 
     @Override
     public List<Area> getActiveAreas() {
-        ArrayList<Area> list = new ArrayList<>();
+        List<Area> list = new ArrayList<>();
         Iterator<Area> iterator = areaList.iterator();
         while (iterator.hasNext()) {
             Area area = iterator.next();

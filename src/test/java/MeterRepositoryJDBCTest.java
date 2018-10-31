@@ -23,7 +23,7 @@ public class MeterRepositoryJDBCTest {
 
     @Test
     public void getAllMeters() {
-        Area area = new Area(321, "Quality Area 1", AreaType.QUALITY, true);
+        Area area = new Area(321, "Quality Area 1", AreaType.QUALITY, true); //NON-NLS
         result = meterDB.getAllMeters(area);
         Assert.assertEquals(123, result.get(0).getId());
     }
@@ -32,7 +32,7 @@ public class MeterRepositoryJDBCTest {
     public void getOldMeter() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss.SSSZ");
         try {
-            Date date = sdf.parse("01-11-2018T12:11:56.235-0700");
+            Date date = sdf.parse("01-11-2018T12:11:56.235-0700"); //NON-NLS
             result = meterDB.getOldMeter(date);
         } catch (ParseException e) {
             e.printStackTrace();
