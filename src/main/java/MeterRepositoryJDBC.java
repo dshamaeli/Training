@@ -46,7 +46,7 @@ public class MeterRepositoryJDBC implements MeterRepository {
         ResultSet result;
         Integer areaId = area.getId();
         List<Meter> list = new ArrayList<>();
-        String query = "select m.* from Meter m, Belongs_To b where m.meter_id=b.meter_id and b.area_id = ?"; //NON-NLS
+        String query = "select m.* from Meter m, AREA_METER_LOOKUP a where m.meter_id = a.meter_id and a.area_id = ?"; //NON-NLS
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, areaId);
             result = preparedStatement.executeQuery();

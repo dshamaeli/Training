@@ -188,13 +188,11 @@ alter table AREA_SUMMARY
   references AREA (AREA_ID) on delete cascade;
 
 
-
-
 -- Create table
-create table BELONGS_TO
+create table AREA_METER_LOOKUP
 (
-  meter_id NUMBER,
-  area_id  NUMBER
+  meter_id NUMBER not null,
+  area_id  NUMBER not null
 )
 tablespace NBSYSSML
   pctfree 10
@@ -208,12 +206,20 @@ tablespace NBSYSSML
     maxextents unlimited
   );
 -- Create/Recreate primary, unique and foreign key constraints
-alter table BELONGS_TO
-  add constraint BELONGS_TO$FK1 foreign key (AREA_ID)
-  references AREA (AREA_ID);
-alter table BELONGS_TO
-  add constraint BELONGS_TO$FK2 foreign key (METER_ID)
+alter table AREA_METER_LOOKUP
+  add constraint AREA_METER_LOOKUP_$PK1 primary key (METER_ID, AREA_ID)
+  using index
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+alter table AREA_METER_LOOKUP
+  add constraint AREA_METER_LOOKUP_$FK1 foreign key (METER_ID)
   references METER (METER_ID);
+alter table AREA_METER_LOOKUP
+  add constraint AREA_METER_LOOKUP_$FK2 foreign key (AREA_ID)
+  references AREA (AREA_ID);
+
 
 -- enable user to enter rows
 
@@ -241,7 +247,7 @@ insert into meter (meter_id,name,install_date,is_active,measurment_data_type,met
 
 --Add row to belongs to
 
-insert into belongs_to (meter_id,area_id) values (123,321);
-insert into belongs_to (meter_id,area_id) values (753,321);
-insert into belongs_to (meter_id,area_id) values (258,556);
-insert into belongs_to (meter_id,area_id) values (951,777);
+insert into AREA_METER_LOOKUP (meter_id,area_id) values (123,321);
+insert into AREA_METER_LOOKUP (meter_id,area_id) values (753,321);
+insert into AREA_METER_LOOKUP (meter_id,area_id) values (258,556);
+insert into AREA_METER_LOOKUP (meter_id,area_id) values (951,777);
