@@ -1,15 +1,14 @@
 -- Create table
-
-create table METERTYPE
+create table METER_TYPE
 (
   meter_type_id NUMBER not null,
-  type_name     VARCHAR2(40 CHAR) constraint metertype_nn$1 not null,
+  type_name     VARCHAR2(40 CHAR),
   max_size      NUMBER,
   max_flow      NUMBER,
   min_flow      NUMBER
 )
 tablespace NBSYSSML
-pctfree 10
+  pctfree 10
   pctused 40
   initrans 1
   maxtrans 255
@@ -20,21 +19,26 @@ pctfree 10
     minextents 1
     maxextents unlimited
   );
--- Add comments to the columns
-comment on column METERTYPE.max_size
+-- Add comments to the columns 
+comment on column METER_TYPE.max_size
   is '0-1000';
-comment on column METERTYPE.max_flow
+comment on column METER_TYPE.max_flow
   is '1-100';
-comment on column METERTYPE.min_flow
+comment on column METER_TYPE.min_flow
   is '1-100';
 -- Create/Recreate primary, unique and foreign key constraints
-alter table METERTYPE
+alter table METER_TYPE
   add constraint METER_TYPE$PK1 primary key (METER_TYPE_ID)
   using index
   tablespace USERS
   pctfree 10
   initrans 2
   maxtrans 255;
+-- Create/Recreate check constraints
+alter table METER_TYPE
+  add constraint METERTYPE_NN$1
+  check ("TYPE_NAME" IS NOT NULL);
+
 
 
 -- Create table
@@ -81,7 +85,7 @@ alter table METER
   );
 alter table METER
   add constraint METER$FK1 foreign key (METER_TYPE_ID)
-  references METERTYPE (METER_TYPE_ID);
+  references METER_TYPE (METER_TYPE_ID);
 
 
 
@@ -210,6 +214,10 @@ alter table BELONGS_TO
 alter table BELONGS_TO
   add constraint BELONGS_TO$FK2 foreign key (METER_ID)
   references METER (METER_ID);
+
+-- enable user to enter rows
+
+ALTER USER nb quota unlimited on USERS;
 
 --Add row to area
 insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','y');
