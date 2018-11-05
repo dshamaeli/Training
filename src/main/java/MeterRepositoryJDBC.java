@@ -14,15 +14,11 @@ import java.util.List;
  */
 public class MeterRepositoryJDBC implements MeterRepository {
     private static final Logger LOG = LoggerFactory.getLogger(MeterRepositoryJDBC.class);
-    private static Connection connection;
+    private Connection connection;
 
 
-    static {
-        try {
-            connection = Database.getConnection();
-        } catch (SQLException e) {
-            LOG.error("database connection SQLException", e);//NON-NLS
-        }
+    MeterRepositoryJDBC(Connection connection) {
+        this.connection = connection;
     }
 
     private List<Meter> generateMeter(ResultSet result) throws SQLException {

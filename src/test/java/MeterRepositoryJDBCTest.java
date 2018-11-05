@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,7 +19,11 @@ public class MeterRepositoryJDBCTest {
 
     @Before
     public void setUp() {
-        meterDB = new MeterRepositoryJDBC();
+        try {
+            meterDB = new MeterRepositoryJDBC(Database.getConnection());
+        } catch (SQLException e) {
+            LOG.error("Error", e); //NON-NLS
+        }
     }
 
     @Test
