@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Trainning_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Trainning_main.iml" group="Trainning" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Trainning_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Trainning_test.iml" group="Trainning" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/integration’__main.iml" filepath="$PROJECT_DIR$/.idea/modules/integration’__main.iml" group="integration’_" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/integration’__test.iml" filepath="$PROJECT_DIR$/.idea/modules/integration’__test.iml" group="integration’_" />
+    </modules>
+  </component>
+</project>

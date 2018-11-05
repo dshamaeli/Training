@@ -3,6 +3,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * @author Daniel.shamaeli
+ * @see AreaRepository
+ */
 public class AreaRepositoryInMemory implements AreaRepository {
 
     private List<Area> areaList = new ArrayList<>();

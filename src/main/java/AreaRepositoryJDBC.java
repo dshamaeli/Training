@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Daniel.shamaeli
+ * @see AreaRepository
+ */
 public class AreaRepositoryJDBC implements AreaRepository {
     private static final Logger LOG = LoggerFactory.getLogger(MeterRepositoryJDBC.class);
     private static Connection connection;

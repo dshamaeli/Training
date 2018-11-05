@@ -17,6 +17,11 @@ public class MeterRepositoryInMemory implements MeterRepository {
         return meterList;
     }
 
+    /**
+     * Adds meter to the repository
+     *
+     * @param meter meter
+     */
     public void addMeter(Meter meter) {
         this.meterList.add(meter);
     }

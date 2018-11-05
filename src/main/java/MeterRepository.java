@@ -7,13 +7,17 @@ import java.util.List;
  */
 public interface MeterRepository {
     /**
+     * Gets a list of Meters assigned to a particular Area
+     *
      * @param area area that list of Meters assigned to it is required
-     * @return
+     * @return list of Meters
      */
     List<Meter> getAllMeters(Area area);
 
 
     /**
+     * Finds “old” meters installed before a provided date
+     *
      * @param date specific date after meters installation
      * @return List “old” meters installed before a provided date
      */

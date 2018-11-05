@@ -104,6 +104,11 @@ public class Area {
         this.isActive = isActive;
     }
 
+    /**
+     * Adds meter to this repository
+     *
+     * @param meter meter that should be added to the repository
+     */
     public void addmeter(Meter meter) {
         metersList.add(meter);
     }

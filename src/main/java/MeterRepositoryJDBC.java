@@ -28,14 +28,14 @@ public class MeterRepositoryJDBC implements MeterRepository {
     private List<Meter> generateMeter(ResultSet result) throws SQLException {
         List<Meter> list = new ArrayList<>();
         while (result.next()) {
-            Integer meter_id = result.getInt("meter_id");//NON-NLS
+            Integer meterId = result.getInt("meter_id");//NON-NLS
             String name = result.getString("name");//NON-NLS
-            Integer meter_type_id = result.getInt("meter_type_id");//NON-NLS
-            Date install_date = result.getDate("install_date");//NON-NLS
-            Boolean is_active = result.getBoolean("is_active");//NON-NLS
+            Integer meterTypeId = result.getInt("meter_type_id");//NON-NLS
+            Date installDate = result.getDate("install_date");//NON-NLS
+            Boolean isActive = result.getBoolean("is_active");//NON-NLS
             String type = result.getString("measurment_data_type");//NON-NLS
-            MeasurementDataType measurement_data_type = MeasurementDataType.convert(type);
-            Meter meter = new Meter(meter_id, name, meter_type_id, install_date, is_active, measurement_data_type);
+            MeasurementDataType measurementDataType = MeasurementDataType.valueOf(type);
+            Meter meter = new Meter(meterId, name, meterTypeId, installDate, isActive, measurementDataType);
             list.add(meter);
         }
         return list;

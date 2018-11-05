@@ -12,6 +12,8 @@ public class MeterData {
     private Double value;
 
     /**
+     * Adds meter data to a meter
+     *
      * @param parent Id of meter that owns the data
      * @param value  recorded numeric value of up to 3 decimal places
      */

@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * @author Daniel.shamaeli
+ */
 public class MeterDataRepositoryInMemory implements MeterDataRepository {
 
     private Map<Meter, List<MeterData>> map = new HashMap<>();

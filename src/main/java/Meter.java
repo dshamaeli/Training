@@ -27,6 +27,8 @@ public class Meter {
 
 
     /**
+     * Generates a meter by meter type ID
+     *
      * @param id                  Unique number that identifies the meter
      * @param name                display name for this meter
      * @param meterTypeId         Id of meter type
@@ -48,6 +50,8 @@ public class Meter {
 
 
     /**
+     * Generates a meter by meter type object
+     *
      * @param id                  Unique number that identifies the meter
      * @param name                display name for this meter
      * @param meterType           Id of meter type
@@ -147,6 +151,8 @@ public class Meter {
     }
 
     /**
+     * Adds meter to an area
+     *
      * @param area parent area of the meter
      */
     public void addParentArea(Area area) {

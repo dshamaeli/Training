@@ -16,6 +16,8 @@ public class MeterType {
 
 
     /**
+     * Generates a meter type
+     *
      * @param meterTypeId   ID of meter type
      * @param meterTypeName display Name for this meter type
      * @param maxSize       maximum size of the meter in mm between 0 and 1000

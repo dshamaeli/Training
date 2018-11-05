@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * @author Daniel.shamaeli
+ */
 public class AreaSummaryRepositoryInMemory implements AreaSummaryRepository {
 
     private Map<Area, List<AreaSummary>> map = new HashMap<>();
