@@ -1,3 +1,4 @@
+package uk.co.crowderconsult;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -149,7 +150,7 @@ public class AreaTest {
     }
 
     @Test
-    public void testAddmeter() throws Exception {
+    public void testAddMeter() throws Exception {
         Area testSubject;
         Meter meter = new Meter();
         testSubject = createTestSubject();

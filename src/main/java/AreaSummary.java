@@ -1,3 +1,5 @@
+package uk.co.crowderconsult;
+
 import java.util.Date;
 
 /**

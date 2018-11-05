@@ -1,3 +1,4 @@
+package uk.co.crowderconsult;
 
 import org.junit.Before;
 import org.junit.Test;

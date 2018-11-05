@@ -1,3 +1,5 @@
+package uk.co.crowderconsult;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +15,7 @@ import java.util.List;
  * @see AreaRepository
  */
 public class AreaRepositoryJDBC implements AreaRepository {
-    private static final Logger LOG = LoggerFactory.getLogger(MeterRepositoryJDBC.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AreaRepositoryJDBC.class);
     private static Connection connection;
 
     static {

@@ -1,4 +1,7 @@
+package uk.co.crowderconsult;
+
 import java.util.Date;
+
 
 /**
  * Meter data are records of network data at a point in time e.g. flow through a

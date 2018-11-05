@@ -1,3 +1,5 @@
+package uk.co.crowderconsult;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
@@ -15,7 +17,7 @@ public class Database {
         dataSource.setUsername("nb"); //NON-NLS
         dataSource.setPassword("NB");//NON-NLS
         dataSource.setUrl("jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5");//NON-NLS
-//        dataSource.setUrl("jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04"); //NON-NLS
+//        dataSource.setUrl("jdbc:oracle:thin:@CCVMFEATURE:¬1521:FEAT04"); //NON-NLS
         return dataSource;
     }
 
