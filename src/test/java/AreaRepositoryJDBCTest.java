@@ -48,7 +48,7 @@ public class AreaRepositoryJDBCTest {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error", e);//NON-NLS
         }
     }
 
