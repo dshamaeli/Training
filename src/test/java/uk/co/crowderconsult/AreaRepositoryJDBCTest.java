@@ -13,13 +13,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AreaRepositoryJDBCTest {
-    private static final Logger LOG = LoggerFactory.getLogger(AreaTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AreaRepositoryJDBCTest.class);
 
-    private AreaRepositoryJDBC areaDB;
+    private uk.co.crowderconsult.AreaRepositoryJDBC areaDB;
 
     {
         try {
-            areaDB = new AreaRepositoryJDBC(Database.getConnection());
+            areaDB = new uk.co.crowderconsult.AreaRepositoryJDBC(uk.co.crowderconsult.Database.getConnection());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -30,7 +30,7 @@ public class AreaRepositoryJDBCTest {
     @BeforeClass
     public static void setUp() {
         try {
-            Connection connection = Database.getConnection();
+            Connection connection = uk.co.crowderconsult.Database.getConnection();
             String insertArea1 = "insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','y')";//NON-NLS
             String insertArea2 = "insert into area (area_id,name,area_type,is_active) values (987,'Quality Area 2','QUALITY','N')";//NON-NLS
             String insertArea3 = "insert into area (area_id,name,area_type,is_active) values (556,'Hydraulic Area 1','HYDRAULIC','Y')";//NON-NLS
@@ -55,7 +55,7 @@ public class AreaRepositoryJDBCTest {
     @AfterClass
     public static void tearDown() {
         try {
-            Connection connection = Database.getConnection();
+            Connection connection = uk.co.crowderconsult.Database.getConnection();
             String deleteArea1 = "delete from area where area_id=321";//NON-NLS
             String deleteArea2 = "delete from area where area_id=987";//NON-NLS
             String deleteArea3 = "delete from area where area_id=556";//NON-NLS

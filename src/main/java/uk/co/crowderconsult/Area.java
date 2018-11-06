@@ -13,9 +13,9 @@ public class Area {
 
     private Integer areaId;
     private String areaName;
-    private AreaType areaType;
+    private uk.co.crowderconsult.AreaType areaType;
     private Boolean isActive;
-    private List<Meter> metersList = new ArrayList<>();
+    private List<uk.co.crowderconsult.Meter> metersList = new ArrayList<>();
 
     /**
      * Generates an area. An area is a geographical region used to logically
@@ -26,7 +26,7 @@ public class Area {
      * @param areaType Shows the area type. One of Hydraulic, Operational or Quality.
      * @param isActive flag to show if the area is active(true) or not(False).
      */
-    public Area(Integer areaId, String areaName, AreaType areaType, Boolean isActive) {
+    public Area(Integer areaId, String areaName, uk.co.crowderconsult.AreaType areaType, Boolean isActive) {
         this.areaId = areaId;
         this.areaName = areaName;
         this.areaType = areaType;
@@ -75,7 +75,7 @@ public class Area {
      *
      * @return type of the area
      */
-    public AreaType getType() {
+    public uk.co.crowderconsult.AreaType getType() {
         return this.areaType;
     }
 
@@ -84,7 +84,7 @@ public class Area {
      *
      * @param areaType one of Hydraulic, Operational or Quality
      */
-    public void setType(AreaType areaType) {
+    public void setType(uk.co.crowderconsult.AreaType areaType) {
         this.areaType = areaType;
     }
 
@@ -111,14 +111,14 @@ public class Area {
      *
      * @param meter meter that should be added to the repository
      */
-    public void addmeter(Meter meter) {
+    public void addmeter(uk.co.crowderconsult.Meter meter) {
         metersList.add(meter);
     }
 
     /**
      * @return List<Meter> a list of Meters assigned to this Area
      */
-    public List<Meter> getAllMeters() {
+    public List<uk.co.crowderconsult.Meter> getAllMeters() {
         return this.metersList;
     }
 
