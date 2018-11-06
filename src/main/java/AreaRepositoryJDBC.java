@@ -16,14 +16,10 @@ import java.util.List;
  */
 public class AreaRepositoryJDBC implements AreaRepository {
     private static final Logger LOG = LoggerFactory.getLogger(AreaRepositoryJDBC.class);
-    private static Connection connection;
+    private Connection connection;
 
-    static {
-        try {
-            connection = Database.getConnection();
-        } catch (SQLException e) {
-            LOG.error("database connection SQLException", e);//NON-NLS
-        }
+    AreaRepositoryJDBC(Connection connection) {
+        this.connection = connection;
     }
 
     private List<Area> generateArea(ResultSet result) throws SQLException {

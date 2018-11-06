@@ -1,6 +1,8 @@
 package uk.co.crowderconsult;
 
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,13 +58,27 @@ public class MeterRepositoryJDBCTest {
 
     @AfterClass
     public static void tearDown() {
-        String deleteArea = "delete from area where area_id=321";//NON-NLS
-        String deleteMeterType1 = "delete from meter_type where meter_type_id=1";//NON-NLS
-        String deleteMeterType2 = "delete from meter_type where meter_type_id=2";//NON-NLS
-        String deleteMeter1 = "delete from meter where meter_id=123";//NON-NLS
-        String deleteMeter2 = "delete from meter where meter_id=753";//NON-NLS
-        String deleteAreaMeterLookup1 = "delete from AREA_METER_LOOKUP where meter_id=123 and area_id=321 ";//NON-NLS
-        String deleteAreaMeterLookup2 = "delete from AREA_METER_LOOKUP where meter_id=753 and area_id=321 ";//NON-NLS
+        try {
+
+            Connection connection = Database.getConnection();
+            String deleteAreaMeterLookup1 = "delete from AREA_METER_LOOKUP where meter_id=123 and area_id=321 ";//NON-NLS
+            String deleteAreaMeterLookup2 = "delete from AREA_METER_LOOKUP where meter_id=753 and area_id=321 ";//NON-NLS
+            String deleteMeter1 = "delete from meter where meter_id=123";//NON-NLS
+            String deleteMeter2 = "delete from meter where meter_id=753";//NON-NLS
+            String deleteMeterType1 = "delete from meter_type where meter_type_id=1";//NON-NLS
+            String deleteMeterType2 = "delete from meter_type where meter_type_id=2";//NON-NLS
+            String deleteArea = "delete from area where area_id=321";//NON-NLS
+            String[] query = {deleteAreaMeterLookup1, deleteAreaMeterLookup2, deleteMeter1, deleteMeter2, deleteMeterType1, deleteMeterType2, deleteArea};
+            for (String q : query) {
+                try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    LOG.error("getAllMeters query SQLException", e);//NON-NLS
+                }
+            }
+        } catch (SQLException e) {
+            LOG.error("Error", e); //NON-NLS
+        }
     }
 
     @Test
