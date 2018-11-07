@@ -42,7 +42,7 @@ public class MeterRepositoryJDBC implements MeterRepository {
     @Override
     public List<Meter> getAllMeters(Area area) {
         ResultSet result;
-        Integer areaId = area.getId();
+        Integer areaId = area.getAreaId();
         List<Meter> list = new ArrayList<>();
         String query = "select m.* from Meter m, AREA_METER_LOOKUP a where m.meter_id = a.meter_id and a.area_id = ?"; //NON-NLS
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {

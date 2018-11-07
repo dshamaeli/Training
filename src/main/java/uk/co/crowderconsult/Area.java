@@ -46,7 +46,7 @@ public class Area {
      *
      * @return areaId
      */
-    public Integer getId() {
+    public Integer getAreaId() {
         return areaId;
     }
 
@@ -55,7 +55,7 @@ public class Area {
      *
      * @param areaId ID of the Area
      */
-    public void setId(Integer areaId) {
+    public void setAreaId(Integer areaId) {
         this.areaId = areaId;
     }
 
@@ -65,7 +65,7 @@ public class Area {
      *
      * @return areaName
      */
-    public String getName() {
+    public String getAreaName() {
         return areaName;
     }
 
@@ -74,7 +74,7 @@ public class Area {
      *
      * @param areaName of the area
      */
-    public void setName(String areaName) {
+    public void setAreaName(String areaName) {
         this.areaName = areaName;
     }
 
@@ -83,7 +83,7 @@ public class Area {
      *
      * @return type of the area
      */
-    public uk.co.crowderconsult.AreaType getType() {
+    public AreaType getAreaType() {
         return this.areaType;
     }
 
@@ -92,7 +92,7 @@ public class Area {
      *
      * @param areaType one of Hydraulic, Operational or Quality
      */
-    public void setType(uk.co.crowderconsult.AreaType areaType) {
+    public void setAreaType(AreaType areaType) {
         this.areaType = areaType;
     }
 
@@ -100,7 +100,7 @@ public class Area {
      * @return <code>true</code> if area is active and <code>false</code>
      * otherwise
      */
-    public Boolean isActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
@@ -110,7 +110,7 @@ public class Area {
      * @param isActive <code>true</code> to activate and <code>false</code> to
      *                 deactivate an area
      */
-    public void setisActive(Boolean isActive) {
+    public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
 
@@ -143,7 +143,7 @@ public class Area {
             return false;
         if (obj == this)
             return true;
-        return this.getId() == ((Area) obj).getId();
+        return this.getAreaId() == ((Area) obj).getAreaId();
     }
 
     @Override

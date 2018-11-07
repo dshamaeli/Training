@@ -24,7 +24,7 @@ public class AreaRepositoryInMemory implements AreaRepository {
         Iterator<Area> iterator = areaList.iterator();
         while (iterator.hasNext()) {
             Area area = iterator.next();
-            if (area.isActive()) {
+            if (area.getIsActive()) {
                 list.add(area);
             }
         }

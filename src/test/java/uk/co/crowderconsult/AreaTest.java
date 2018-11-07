@@ -33,7 +33,7 @@ public class AreaTest {
 
         // default test
         testSubject = createTestSubject();
-        result = testSubject.getId();
+        result = testSubject.getAreaId();
         LOG.trace(String.valueOf(result));
         assertEquals(this.id, result);
     }
@@ -46,8 +46,8 @@ public class AreaTest {
 
         // default test
         testSubject = createEmptyTestSubject();
-        testSubject.setId(id);
-        result = testSubject.getId();
+        testSubject.setAreaId(id);
+        result = testSubject.getAreaId();
         assertEquals(id, result);
     }
 
@@ -58,7 +58,7 @@ public class AreaTest {
 
         // default test
         testSubject = createTestSubject();
-        result = testSubject.getName();
+        result = testSubject.getAreaName();
         assertEquals(this.name, result);
     }
 
@@ -70,8 +70,8 @@ public class AreaTest {
 
         // default test
         testSubject = createEmptyTestSubject();
-        testSubject.setName(name);
-        result = testSubject.getName();
+        testSubject.setAreaName(name);
+        result = testSubject.getAreaName();
         assertEquals(name, result);
     }
 
@@ -82,7 +82,7 @@ public class AreaTest {
 
         // default test
         testSubject = createTestSubject();
-        result = testSubject.getType();
+        result = testSubject.getAreaType();
         assertEquals(this.type, result);
     }
 
@@ -93,8 +93,8 @@ public class AreaTest {
         AreaType result;
         // default test
         testSubject = createEmptyTestSubject();
-        testSubject.setType(type);
-        result = testSubject.getType();
+        testSubject.setAreaType(type);
+        result = testSubject.getAreaType();
         assertEquals(this.type, result);
     }
 
@@ -103,7 +103,7 @@ public class AreaTest {
         Area testSubject;
         Boolean result;
         testSubject = createTestSubject();
-        result = testSubject.isActive();
+        result = testSubject.getIsActive();
         assertEquals(this.active, result);
     }
 
@@ -112,8 +112,8 @@ public class AreaTest {
         Area testSubject;
         Boolean result;
         testSubject = createEmptyTestSubject();
-        testSubject.setisActive(this.active);
-        result = testSubject.isActive();
+        testSubject.setIsActive(this.active);
+        result = testSubject.getIsActive();
         assertEquals(this.active, result);
     }
 
