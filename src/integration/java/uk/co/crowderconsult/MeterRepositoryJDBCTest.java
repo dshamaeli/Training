@@ -25,7 +25,7 @@ public class MeterRepositoryJDBCTest {
         try {
             meterDB = new MeterRepositoryJDBC(Database.getConnection());
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error", e);//NON-NLS
         }
     }
 
@@ -95,7 +95,7 @@ public class MeterRepositoryJDBCTest {
             Date date = sdf.parse("01-11-2018T12:11:56.235-0700"); //NON-NLS
             result = meterDB.getOldMeter(date);
         } catch (ParseException e) {
-            e.printStackTrace();
+            LOG.error("Error", e);//NON-NLS
         }
         Assert.assertEquals(123, result.get(0).getId());
     }

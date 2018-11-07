@@ -21,7 +21,7 @@ public class AreaRepositoryJDBCTest {
         try {
             areaDB = new AreaRepositoryJDBC(Database.getConnection());
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error("Error", e);//NON-NLS
         }
     }
 
