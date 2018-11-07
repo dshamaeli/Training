@@ -11,13 +11,12 @@ import java.sql.SQLException;
  * @author Daniel.shamaeli
  */
 public class Database {
-    private static BasicDataSource createDataSource() {
+    private static BasicDataSource createDataSource(String url) {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");//NON-NLS
         dataSource.setUsername("nb"); //NON-NLS
         dataSource.setPassword("NB");//NON-NLS
-        dataSource.setUrl("jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5");//NON-NLS
-//        dataSource.setUrl("jdbc:oracle:thin:@CCVMFEATURE:¬1521:FEAT04"); //NON-NLS
+        dataSource.setUrl(url);//NON-NLS
         return dataSource;
     }
 
@@ -25,12 +24,25 @@ public class Database {
 
     }
 
+
     /**
+     * creates database connection
+     *
      * @return statement object to query JDBC
      * @throws SQLException throws exception if it fails to connect
      */
-    public static Connection getConnection() throws SQLException {
-        BasicDataSource db = createDataSource();
+    static Connection getConnection() throws SQLException {
+        String url = "FEAT04";
+//        String url = "NIGHT5";
+        if ("NIGHT5".equals(url)) {
+            url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5";//NON-NLS
+
+        } else if ("FEAT04".equals(url)) {
+            url = "jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04";//NON-NLS
+
+        }
+
+        BasicDataSource db = createDataSource(url);
         return db.getConnection();
     }
 }
