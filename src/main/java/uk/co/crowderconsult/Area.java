@@ -20,6 +20,14 @@ public class Area {
     /**
      * Generates an area. An area is a geographical region used to logically
      * group part of a water network.
+     */
+    public Area() {
+
+    }
+
+    /**
+     * Generates an area. An area is a geographical region used to logically
+     * group part of a water network.
      *
      * @param areaId   Unique number that identifies the area.
      * @param areaName Display name for this area.
