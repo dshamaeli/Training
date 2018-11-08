@@ -16,7 +16,7 @@ public class DatabaseTest {
     public void setUp() {
         try {
             Connection connection = Database.getConnection();
-            String query = "insert into area (area_id,name,area_type,is_active) values (1011,'Quality Area 1','QUALITY','y')";//NON-NLS
+            String query = "insert into AREA (area_id,name,area_type,is_active) values (1011,'Quality Area 1','QUALITY',1)";//NON-NLS
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
@@ -31,7 +31,7 @@ public class DatabaseTest {
     public void tearDown() {
         try {
             Connection connection = Database.getConnection();
-            String query = "delete from area where area_id=1011";//NON-NLS
+            String query = "delete from AREA where area_id=1011";//NON-NLS
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
@@ -48,7 +48,7 @@ public class DatabaseTest {
 
         connection = Database.getConnection();
         Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("select * from area");
+        ResultSet result = statement.executeQuery("select * from AREA");
         result.next();
         Assert.assertEquals(1011, result.getInt("area_id"));
 

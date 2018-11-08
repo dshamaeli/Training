@@ -5,25 +5,25 @@
     <session-factory>
 
         <property name="hibernate.dialect">
-            org.hibernate.dialect.Oracle10gDialect
+            org.hibernate.dialect.MySQLDialect
         </property>
 
         <property name="hibernate.connection.driver_class">
-            oracle.jdbc.driver.OracleDriver
+            com.mysql.cj.jdbc.Driver
         </property>
 
         <!-- Assume test is the database name -->
 
         <property name="hibernate.connection.url">
-            jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04
+            jdbc:mysql://localhost/training
         </property>
 
         <property name="hibernate.connection.username">
-            nb
+            daniel
         </property>
 
         <property name="hibernate.connection.password">
-            NB
+            153426
         </property>
 
         <!-- List of XML mapping files -->

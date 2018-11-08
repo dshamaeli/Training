@@ -13,9 +13,9 @@ import java.sql.SQLException;
 public class Database {
     private static BasicDataSource createDataSource(String url) {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");//NON-NLS
-        dataSource.setUsername("nb"); //NON-NLS
-        dataSource.setPassword("NB");//NON-NLS
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");//NON-NLS
+        dataSource.setUsername("daniel"); //NON-NLS
+        dataSource.setPassword("153426");//NON-NLS
         dataSource.setUrl(url);//NON-NLS
         return dataSource;
     }
@@ -32,9 +32,10 @@ public class Database {
      * @throws SQLException throws exception if it fails to connect
      */
     static Connection getConnection() throws SQLException {
-        String url = "FEAT04";
-//        String url = "NIGHT5";
-        if ("NIGHT5".equals(url)) {
+        String url = "LOCAL";
+        if (url.equals("LOCAL")) {
+            url = "jdbc:mysql://localhost/training";
+        } else if ("NIGHT5".equals(url)) {
             url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5";//NON-NLS
 
         } else if ("FEAT04".equals(url)) {
