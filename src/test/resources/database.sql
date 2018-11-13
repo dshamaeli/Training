@@ -48,7 +48,7 @@ create table METER
   name                 VARCHAR2(40 CHAR) not null,
   install_date         DATE,
   is_active            VARCHAR2(1 CHAR),
-  measurment_data_type VARCHAR2(8 CHAR),
+  measurement_data_type VARCHAR2(8 CHAR),
   meter_type_id        NUMBER
 )
 tablespace NBSYSSML
@@ -66,7 +66,7 @@ tablespace NBSYSSML
 -- Add comments to the columns
 comment on column METER.is_active
   is 'Y/N';
-comment on column METER.measurment_data_type
+comment on column METER.measurement_data_type
   is 'Flow/Level/Pressure';
 -- Create/Recreate primary, unique and foreign key constraints
 alter table METER

@@ -4,8 +4,6 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +11,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AreaRepositoryHibernateTest {
-    private static final Logger LOG = LoggerFactory.getLogger(AreaRepositoryJDBCTest.class);
     private AreaRepositoryHibernate areaHibernate = new AreaRepositoryHibernate();
     private List<Area> result = null;
 

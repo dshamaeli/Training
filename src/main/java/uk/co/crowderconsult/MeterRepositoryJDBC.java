@@ -31,7 +31,7 @@ public class MeterRepositoryJDBC implements MeterRepository {
             Integer meterTypeId = result.getInt("meter_type_id");//NON-NLS
             Date installDate = result.getDate("install_date");//NON-NLS
             Boolean isActive = result.getBoolean("is_active");//NON-NLS
-            String type = result.getString("measurment_data_type");//NON-NLS
+            String type = result.getString("measurement_data_type");//NON-NLS
             MeasurementDataType measurementDataType = MeasurementDataType.valueOf(type);
             Meter meter = new Meter(meterId, name, meterTypeId, installDate, isActive, measurementDataType);
             list.add(meter);

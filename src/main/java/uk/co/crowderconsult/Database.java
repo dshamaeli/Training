@@ -32,10 +32,10 @@ public class Database {
      * @throws SQLException throws exception if it fails to connect
      */
     static Connection getConnection() throws SQLException {
-        String url = "FEAT04";
-//        String url = "NIGHT5";
-        if ("NIGHT5".equals(url)) {
-            url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5";//NON-NLS
+//        String url = "FEAT04";
+        String url = "NIGHT9";
+        if ("NIGHT9".equals(url)) {
+            url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT9";//NON-NLS
 
         } else if ("FEAT04".equals(url)) {
             url = "jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04";//NON-NLS

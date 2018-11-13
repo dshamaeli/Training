@@ -1,22 +1,22 @@
-<?xml version = "1.0" encoding = "utf-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-        "-//Hibernate/Hibernate Mapping DTD//EN"
-        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--<?xml version = "1.0" encoding = "utf-8"?>-->
+<!--<!DOCTYPE hibernate-mapping PUBLIC-->
+<!--"-//Hibernate/Hibernate Mapping DTD//EN"-->
+<!--"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">-->
 
-<hibernate-mapping>
-    <class name="uk.co.crowderconsult.Area" table="Area">
+<!--<hibernate-mapping>-->
+<!--<class name="uk.co.crowderconsult.Area" table="Area">-->
 
-        <meta attribute="class-description">
-            This class contains the area detail.
-        </meta>
+<!--<meta attribute="class-description">-->
+<!--This class contains the area detail.-->
+<!--</meta>-->
 
-        <id name="areaId" type="integer" column="AREA_ID">
-            <generator class="native"/>
-        </id>
+<!--<id name="areaId" type="integer" column="AREA_ID">-->
+<!--<generator class="native"/>-->
+<!--</id>-->
 
-        <property name="areaName" column="NAME" type="string"/>
-        <property name="areaType" column="AREA_TYPE" type="string"/>
-        <property name="isActive" column="IS_ACTIVE" type="yes_no"/>
+<!--<property name="areaName" column="NAME" type="string"/>-->
+<!--<property name="areaType" column="AREA_TYPE" type="string"/>-->
+<!--<property name="isActive" column="IS_ACTIVE" type="yes_no"/>-->
 
-    </class>
-</hibernate-mapping>
+<!--</class>-->
+<!--</hibernate-mapping>-->

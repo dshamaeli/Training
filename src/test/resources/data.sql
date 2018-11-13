@@ -17,10 +17,10 @@ insert into meter_type (meter_type_id,type_name,max_size,max_flow,min_flow) valu
 insert into meter_type (meter_type_id,type_name,max_size,max_flow,min_flow) values (4,'Outlet Meter', 50.00,50.00,20.00);
 
 --Add row to meter
-insert into meter (meter_id,name,install_date,is_active,measurment_data_type,meter_type_id) values (123,'Quality Area 1 Meter', to_date('13-DEC-2017 6:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','FLOW',1);
-insert into meter (meter_id,name,install_date,is_active,measurment_data_type,meter_type_id) values (753,'Quality Area 1 Meter', to_date('25-DEC-2017 5:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','FLOW',4);
-insert into meter (meter_id,name,install_date,is_active,measurment_data_type,meter_type_id) values (258,'Hydraulic Area 1 Meter', to_date('25-OCT-2018 10:56 AM', 'dd-mon-yyyy hh:mi PM'),'Y','PRESSURE',2);
-insert into meter (meter_id,name,install_date,is_active,measurment_data_type,meter_type_id) values (951,'Operationl Area 1 Meter', to_date('20-SEP-2018 1:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','LEVEL',4);
+insert into meter (meter_id,name,install_date,is_active,measurement_data_type,meter_type_id) values (123,'Quality Area 1 Meter', to_date('13-DEC-2017 6:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','FLOW',1);
+insert into meter (meter_id,name,install_date,is_active,measurement_data_type,meter_type_id) values (753,'Quality Area 1 Meter', to_date('25-DEC-2017 5:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','FLOW',4);
+insert into meter (meter_id,name,install_date,is_active,measurement_data_type,meter_type_id) values (258,'Hydraulic Area 1 Meter', to_date('25-OCT-2018 10:56 AM', 'dd-mon-yyyy hh:mi PM'),'Y','PRESSURE',2);
+insert into meter (meter_id,name,install_date,is_active,measurement_data_type,meter_type_id) values (951,'Operationl Area 1 Meter', to_date('20-SEP-2018 1:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','LEVEL',4);
 
 --Add row to belongs to
 

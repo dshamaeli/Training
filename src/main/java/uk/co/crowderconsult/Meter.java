@@ -1,6 +1,7 @@
 package uk.co.crowderconsult;
 
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,14 +12,25 @@ import java.util.List;
  *
  * @author daniel.shamaeli
  */
+@Entity
+@Table(name = "Meter")
 public class Meter {
 
+    @Id
+    @Column(name = "meter_id")
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "meter_type_id")
     private Integer meteTypeId;
+    @Column(name = "install_date")
     private Date installDate;
+    @Column(name = "is_active")
     private Boolean active;
+    @Column(name = "measurement_data_type")
     private MeasurementDataType measurementDataType;
+    //    @ManyToMany(mappedBy = "Meter")
+    @Transient
     private List<Area> areaList = new ArrayList<>();
 
     /**

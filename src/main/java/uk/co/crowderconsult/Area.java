@@ -1,5 +1,6 @@
 package uk.co.crowderconsult;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +10,27 @@ import java.util.List;
  *
  * @author daniel.shamaeli
  */
+@Entity
+@Table(name = "Area")
 public class Area {
 
+    @Column(name = "area_id")
+    @Id
     private Integer areaId;
+    @Column(name = "name")
     private String areaName;
-    private uk.co.crowderconsult.AreaType areaType;
+    @Column(name = "area_type")
+    private AreaType areaType;
+    @Column(name = "is_active")
+    @Convert(converter = BooleanYesNoConverter.class)
     private Boolean isActive;
+    //    @ManyToMany(cascade = {CascadeType.ALL})
+//    @JoinTable(
+//            name = "AREA_METER_LOOKUP",
+//            joinColumns = {@JoinColumn(name = "area_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "meter_id")}
+//    )
+    @Transient
     private List<uk.co.crowderconsult.Meter> metersList = new ArrayList<>();
 
     /**

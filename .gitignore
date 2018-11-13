@@ -45,3 +45,4 @@ gradle-app.setting
 gradle/wrapper/gradle-wrapper.jar
 /out/
 /.idea/
+/src/test/resources/database.~sql
