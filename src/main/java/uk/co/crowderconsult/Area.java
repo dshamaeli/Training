@@ -20,16 +20,17 @@ public class Area {
     @Column(name = "name")
     private String areaName;
     @Column(name = "area_type")
+    @Convert(converter = AreaTypeConverter.class)
     private AreaType areaType;
     @Column(name = "is_active")
     @Convert(converter = BooleanYesNoConverter.class)
     private Boolean isActive;
-    //    @ManyToMany(cascade = {CascadeType.ALL})
-//    @JoinTable(
-//            name = "AREA_METER_LOOKUP",
-//            joinColumns = {@JoinColumn(name = "area_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "meter_id")}
-//    )
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "AREA_METER_LOOKUP",
+            joinColumns = {@JoinColumn(name = "area_id")},
+            inverseJoinColumns = {@JoinColumn(name = "meter_id")}
+    )
     @Transient
     private List<uk.co.crowderconsult.Meter> metersList = new ArrayList<>();
 

@@ -29,7 +29,7 @@ public class Meter {
     private Boolean active;
     @Column(name = "measurement_data_type")
     private MeasurementDataType measurementDataType;
-    //    @ManyToMany(mappedBy = "Meter")
+    @ManyToMany(mappedBy = "Meter")
     @Transient
     private List<Area> areaList = new ArrayList<>();
 
