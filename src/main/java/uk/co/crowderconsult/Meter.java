@@ -34,8 +34,8 @@ public class Meter {
     @OneToMany(targetEntity = Area.class)
     @JoinTable(
             name = "area_meter_lookup",
-            joinColumns = {@JoinColumn(name = "meter_id")},
-            inverseJoinColumns = {@JoinColumn(name = "area_id")}
+            joinColumns = {@JoinColumn(name = "area_id")},
+            inverseJoinColumns = {@JoinColumn(name = "meter_id")}
     )
     private List<Area> areaList = new ArrayList<>();
 

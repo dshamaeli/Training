@@ -35,7 +35,7 @@ public class MeterRepositoryJDBCTest {
     public static void setUp() throws SQLException {
 
         Connection connection = Database.getConnection();
-        String insertArea = "insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','y')";//NON-NLS
+        String insertArea = "insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','Y')";//NON-NLS
         String insertMeterType1 = "insert into meter_type (meter_type_id,type_name,max_size,max_flow,min_flow) values (1,'Inlet Meter', 50.00,50.00,20.00)";//NON-NLS
         String insertMeterType2 = "insert into meter_type (meter_type_id,type_name,max_size,max_flow,min_flow) values (4,'Abstraction Meter',650.00,100.00,100.00)";//NON-NLS
         String insertMeter1 = "insert into meter (meter_id,name,install_date,is_active,measurement_data_type,meter_type_id) values (123,'Quality Area 1 Meter', to_date('13-DEC-2017 6:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','FLOW',1)";//NON-NLS

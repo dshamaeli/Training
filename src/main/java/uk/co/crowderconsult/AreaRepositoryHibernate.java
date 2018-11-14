@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+/**
+ * @author Daniel.shamaeli
+ */
 public class AreaRepositoryHibernate implements AreaRepository {
     private static final Logger LOG = LoggerFactory.getLogger(AreaRepositoryHibernate.class);
     final Configuration cfg = new Configuration()
@@ -18,16 +21,14 @@ public class AreaRepositoryHibernate implements AreaRepository {
             .setProperty("hibernate.connection.password", "NB")
             .setProperty("hibernate.dialec", "org.hibernate.dialect.Oracle10gDialect")
             .setProperty("hibernate.show_sql", "true")
-            .addAnnotatedClass(Area.class);
+            .addAnnotatedClass(Area.class)
+            .addAnnotatedClass(Meter.class);
     private SessionFactory factory = cfg.buildSessionFactory();
 
     private <T> List<Area> getAreaQuery(String propertyname, T param) {
-
-        Session session = factory.openSession();
         Transaction transaction = null;
         List<Area> list = null;
-        try {
-            session = factory.openSession();
+        try (Session session = factory.openSession()) {
             transaction = session.beginTransaction();
 
             Criteria createCriteria = session.createCriteria(Area.class);
@@ -38,8 +39,6 @@ public class AreaRepositoryHibernate implements AreaRepository {
         } catch (HibernateException e) {
             if (transaction != null) transaction.rollback();
             LOG.error("Error", e);//NON-NLS
-        } finally {
-            session.close();
         }
         return list;
     }

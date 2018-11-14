@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author Daniel.shamaeli
+ */
 public class MeterRepositoryHibernate implements MeterRepository {
     private static final Logger LOG = LoggerFactory.getLogger(MeterRepositoryHibernate.class);
 
@@ -20,25 +23,24 @@ public class MeterRepositoryHibernate implements MeterRepository {
             .setProperty("hibernate.connection.password", "NB")
             .setProperty("hibernate.dialec", "org.hibernate.dialect.Oracle10gDialect")
             .addAnnotatedClass(Meter.class)
+            .addAnnotatedClass(Area.class)
             .buildSessionFactory();
-    Session session = factory.openSession();
 
     @Override
     public List<Meter> getAllMeters(Area area) {
-        final String column = "id";//NON-NLS
+        final String sql = "select m.* from Meter m, AREA_METER_LOOKUP a where m.meter_id = a.meter_id and a.area_id = :area_id";//NON-NLS
+        Session session = factory.openSession();
+        SQLQuery query = session.createSQLQuery(sql);
         Integer areaId = area.getAreaId();
         List<Meter> list = null;
         Transaction transaction = null;
         try {
-            session = factory.openSession();
             transaction = session.beginTransaction();
-            Criteria createCriteria = session.createCriteria(Meter.class);
-            createCriteria.add(Restrictions.eq(column, areaId));
-            list = createCriteria.list();
+            query.addEntity(Meter.class).setParameter("area_id", areaId);
+            list = query.list();
         } catch (HibernateException e) {
             if (transaction != null) transaction.rollback();
-            System.out.println(e);
-//            LOG.error("Error", e);//NON-NLS
+            LOG.error("Error", e);//NON-NLS
         } finally {
             session.close();
         }
@@ -48,20 +50,19 @@ public class MeterRepositoryHibernate implements MeterRepository {
 
     @Override
     public List<Meter> getOldMeter(Date date) {
+        Session session = factory.openSession();
         List<Meter> list = null;
         java.sql.Date dateSQL = new java.sql.Date(date.getTime());
         String column = "installDate";//NON-NLS
         Transaction transaction = null;
         try {
-            session = factory.openSession();
             transaction = session.beginTransaction();
             Criteria createCriteria = session.createCriteria(Meter.class);
             createCriteria.add(Restrictions.le(column, dateSQL));
             list = createCriteria.list();
         } catch (HibernateException e) {
             if (transaction != null) transaction.rollback();
-            System.out.println(e);
-//            LOG.error("Error", e);//NON-NLS
+            LOG.error("Error", e);//NON-NLS
         } finally {
             session.close();
         }

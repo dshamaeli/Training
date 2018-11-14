@@ -16,7 +16,7 @@ public class DatabaseTest {
     public void setUp() {
         try {
             Connection connection = Database.getConnection();
-            String query = "insert into area (area_id,name,area_type,is_active) values (1011,'Quality Area 1','QUALITY','y')";//NON-NLS
+            String query = "insert into area (area_id,name,area_type,is_active) values (1011,'Quality Area 1','QUALITY','Y')";//NON-NLS
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {

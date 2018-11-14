@@ -30,7 +30,7 @@ public class AreaRepositoryJDBCTest {
     @BeforeClass
     public static void setUp() throws SQLException {
         Connection connection = Database.getConnection();
-        String insertArea1 = "insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','y')";//NON-NLS
+        String insertArea1 = "insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','Y')";//NON-NLS
         String insertArea2 = "insert into area (area_id,name,area_type,is_active) values (987,'Quality Area 2','QUALITY','N')";//NON-NLS
         String insertArea3 = "insert into area (area_id,name,area_type,is_active) values (556,'Hydraulic Area 1','HYDRAULIC','Y')";//NON-NLS
         String insertArea4 = "insert into area (area_id,name,area_type,is_active) values (864,'Hydraulic Area 1','HYDRAULIC','Y')";//NON-NLS

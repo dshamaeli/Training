@@ -16,6 +16,9 @@ import java.util.Date;
 import java.util.List;
 
 
+/**
+ * @author Daniel.shamaeli
+ */
 public class MeterRepositoryJDBCTest {
     private static final Logger LOG = LoggerFactory.getLogger(MeterRepositoryJDBCTest.class);
 
@@ -36,20 +39,17 @@ public class MeterRepositoryJDBCTest {
         try {
 
             Connection connection = Database.getConnection();
-            String insertArea = "insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','y')";//NON-NLS
+            String insertArea = "insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','Y')";//NON-NLS
             String insertMeterType1 = "insert into meter_type (meter_type_id,type_name,max_size,max_flow,min_flow) values (1,'Inlet Meter', 50.00,50.00,20.00)";//NON-NLS
             String insertMeterType2 = "insert into meter_type (meter_type_id,type_name,max_size,max_flow,min_flow) values (2,'Abstraction Meter',650.00,100.00,100.00)";//NON-NLS
-            String insertMeter1 = "insert into meter (meter_id,name,install_date,is_active,measurment_data_type,meter_type_id) values (123,'Quality Area 1 Meter', to_date('13-DEC-2017 6:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','FLOW',1)";//NON-NLS
-            String insertMeter2 = "insert into meter (meter_id,name,install_date,is_active,measurment_data_type,meter_type_id) values (753,'Quality Area 1 Meter', to_date('25-DEC-2017 5:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','FLOW',4)";//NON-NLS
+            String insertMeter1 = "insert into meter (meter_id,name,install_date,is_active,measurement_data_type,meter_type_id) values (123,'Quality Area 1 Meter', to_date('13-DEC-2017 6:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','FLOW',1)";//NON-NLS
+            String insertMeter2 = "insert into meter (meter_id,name,install_date,is_active,measurement_data_type,meter_type_id) values (753,'Quality Area 1 Meter', to_date('25-DEC-2017 5:56 PM', 'dd-mon-yyyy hh:mi PM'),'Y','FLOW',4)";//NON-NLS
             String insertAreaMeterLookup1 = "insert into AREA_METER_LOOKUP (meter_id,area_id) values (123,321)";//NON-NLS
             String insertAreaMeterLookup2 = "insert into AREA_METER_LOOKUP (meter_id,area_id) values (753,321)";//NON-NLS
             String[] query = {insertArea, insertMeterType1, insertMeterType2, insertMeter1, insertMeter2, insertAreaMeterLookup1, insertAreaMeterLookup2};
             for (String q : query) {
-                try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
-                    preparedStatement.executeUpdate();
-                } catch (SQLException e) {
-                    LOG.error("getAllMeters query SQLException", e);//NON-NLS
-                }
+                PreparedStatement preparedStatement = connection.prepareStatement(q);
+                preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
             LOG.error("Error", e); //NON-NLS
@@ -70,11 +70,8 @@ public class MeterRepositoryJDBCTest {
             String deleteArea = "delete from area where area_id=321";//NON-NLS
             String[] query = {deleteAreaMeterLookup1, deleteAreaMeterLookup2, deleteMeter1, deleteMeter2, deleteMeterType1, deleteMeterType2, deleteArea};
             for (String q : query) {
-                try (PreparedStatement preparedStatement = connection.prepareStatement(q)) {
-                    preparedStatement.executeUpdate();
-                } catch (SQLException e) {
-                    LOG.error("getAllMeters query SQLException", e);//NON-NLS
-                }
+                PreparedStatement preparedStatement = connection.prepareStatement(q);
+                preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {
             LOG.error("Error", e); //NON-NLS
