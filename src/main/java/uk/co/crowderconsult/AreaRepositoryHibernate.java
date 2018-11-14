@@ -10,18 +10,6 @@ import java.util.List;
 
 public class AreaRepositoryHibernate implements AreaRepository {
     private static final Logger LOG = LoggerFactory.getLogger(AreaRepositoryHibernate.class);
-
-//    private static SessionFactory factory;
-
-//    {
-//        try {
-//            factory = new Configuration().configure().buildSessionFactory();
-//        } catch (HibernateException e) {
-//            System.out.println(e);
-//            LOG.error("Failed to create sessionFactory object.", e);//NON-NLS
-//        }
-//    }
-
     final Configuration cfg = new Configuration()
             .addPackage("uk.co.crowderconsult")
             .setProperty("hibernate.connection.driver_class", "oracle.jdbc.driver.OracleDriver")
@@ -31,7 +19,7 @@ public class AreaRepositoryHibernate implements AreaRepository {
             .setProperty("hibernate.dialec", "org.hibernate.dialect.Oracle10gDialect")
             .setProperty("hibernate.show_sql", "true")
             .addAnnotatedClass(Area.class);
-    SessionFactory factory = cfg.buildSessionFactory();
+    private SessionFactory factory = cfg.buildSessionFactory();
 
     private <T> List<Area> getAreaQuery(String propertyname, T param) {
 
@@ -49,8 +37,7 @@ public class AreaRepositoryHibernate implements AreaRepository {
             list = createCriteria.list();
         } catch (HibernateException e) {
             if (transaction != null) transaction.rollback();
-            System.out.println(e);
-//            LOG.error("Error", e);//NON-NLS
+            LOG.error("Error", e);//NON-NLS
         } finally {
             session.close();
         }
