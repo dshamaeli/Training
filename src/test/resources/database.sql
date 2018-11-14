@@ -122,6 +122,7 @@ alter table METER_DATA
 
 
 -- Create table
+-- Create table
 create table AREA
 (
   area_id   NUMBER not null,
@@ -137,22 +138,34 @@ tablespace NBSYSSML
   storage
   (
     initial 64K
+    next 1M
     minextents 1
     maxextents unlimited
   );
--- Add comments to the columns
+-- Add comments to the columns 
 comment on column AREA.area_type
   is 'Hydraulic/Operational/Quality';
 comment on column AREA.is_active
   is 'Y/N';
--- Create/Recreate primary, unique and foreign key constraints
+-- Create/Recreate primary, unique and foreign key constraints 
 alter table AREA
   add constraint AREA$PK1 primary key (AREA_ID)
-  using index
+  using index 
   tablespace USERS
   pctfree 10
   initrans 2
-  maxtrans 255;
+  maxtrans 255
+  storage
+  (
+    initial 80K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate check constraints 
+alter table AREA
+  add constraint AREA$C1
+  check (is_active IN ('Y','N'));
 
 
 -- Create table

@@ -25,9 +25,11 @@ public class Meter {
     private Integer meteTypeId;
     @Column(name = "install_date")
     private Date installDate;
+    @Convert(converter = BooleanYesNoConverter.class)
     @Column(name = "is_active")
     private Boolean active;
     @Column(name = "measurement_data_type")
+    @Convert(converter = MeasurementDataTypeConverter.class)
     private MeasurementDataType measurementDataType;
     @ManyToMany(mappedBy = "Meter")
     @Transient

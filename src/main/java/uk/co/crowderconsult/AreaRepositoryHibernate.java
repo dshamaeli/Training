@@ -1,10 +1,8 @@
 package uk.co.crowderconsult;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,15 +33,20 @@ public class AreaRepositoryHibernate implements AreaRepository {
             .addAnnotatedClass(Area.class);
     SessionFactory factory = cfg.buildSessionFactory();
 
-    private List<Area> getAreaQuery(String query) {
+    private <T> List<Area> getAreaQuery(String propertyname, T param) {
 
         Session session = factory.openSession();
         Transaction transaction = null;
         List<Area> list = null;
         try {
+            session = factory.openSession();
             transaction = session.beginTransaction();
-            list = session.createQuery(query).list();
-            transaction.commit();
+
+            Criteria createCriteria = session.createCriteria(Area.class);
+            if (propertyname != null) {
+                createCriteria.add(Restrictions.eq(propertyname, param));
+            }
+            list = createCriteria.list();
         } catch (HibernateException e) {
             if (transaction != null) transaction.rollback();
             System.out.println(e);
@@ -56,18 +59,16 @@ public class AreaRepositoryHibernate implements AreaRepository {
 
     @Override
     public List<Area> getAllAreas() {
-        final String query = "From Area";
         List<Area> list;
-        list = getAreaQuery(query);
+        list = getAreaQuery(null, null);
         return list;
     }
 
     @Override
     public List<Area> getActiveAreas() {
-//        final String query = "from Area where upper(is_active)='Y'";
-        final String query = "From Area";
+        final String column = "isActive";
         List<Area> list;
-        list = getAreaQuery(query);
+        list = getAreaQuery(column, true);
         return list;
     }
 }
