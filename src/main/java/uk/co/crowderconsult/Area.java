@@ -25,14 +25,13 @@ public class Area {
     @Column(name = "is_active")
     @Convert(converter = BooleanYesNoConverter.class)
     private Boolean isActive;
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @OneToMany(targetEntity = Meter.class)
     @JoinTable(
-            name = "AREA_METER_LOOKUP",
+            name = "area_meter_lookup",
             joinColumns = {@JoinColumn(name = "area_id")},
             inverseJoinColumns = {@JoinColumn(name = "meter_id")}
     )
-    @Transient
-    private List<uk.co.crowderconsult.Meter> metersList = new ArrayList<>();
+    private List<Meter> metersList = new ArrayList<>();
 
     /**
      * Generates an area. An area is a geographical region used to logically
@@ -51,7 +50,7 @@ public class Area {
      * @param areaType Shows the area type. One of Hydraulic, Operational or Quality.
      * @param isActive flag to show if the area is active(true) or not(False).
      */
-    public Area(Integer areaId, String areaName, uk.co.crowderconsult.AreaType areaType, Boolean isActive) {
+    public Area(Integer areaId, String areaName, AreaType areaType, Boolean isActive) {
         this.areaId = areaId;
         this.areaName = areaName;
         this.areaType = areaType;
@@ -136,14 +135,14 @@ public class Area {
      *
      * @param meter meter that should be added to the repository
      */
-    public void addmeter(uk.co.crowderconsult.Meter meter) {
+    public void addmeter(Meter meter) {
         metersList.add(meter);
     }
 
     /**
      * @return List<Meter> a list of Meters assigned to this Area
      */
-    public List<uk.co.crowderconsult.Meter> getAllMeters() {
+    public List<Meter> getAllMeters() {
         return this.metersList;
     }
 

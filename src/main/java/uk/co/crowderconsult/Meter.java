@@ -31,8 +31,12 @@ public class Meter {
     @Column(name = "measurement_data_type")
     @Convert(converter = MeasurementDataTypeConverter.class)
     private MeasurementDataType measurementDataType;
-    @ManyToMany(mappedBy = "Meter")
-    @Transient
+    @OneToMany(targetEntity = Area.class)
+    @JoinTable(
+            name = "area_meter_lookup",
+            joinColumns = {@JoinColumn(name = "meter_id")},
+            inverseJoinColumns = {@JoinColumn(name = "area_id")}
+    )
     private List<Area> areaList = new ArrayList<>();
 
     /**

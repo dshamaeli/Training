@@ -2,11 +2,10 @@ package uk.co.crowderconsult;
 
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,15 +22,19 @@ public class MeterRepositoryHibernate implements MeterRepository {
             .addAnnotatedClass(Meter.class)
             .buildSessionFactory();
     Session session = factory.openSession();
-    Criteria cr = session.createCriteria(Meter.class);
 
-    private List<Meter> getMeterQuery(String query) {
-        Transaction transaction = null;
+    @Override
+    public List<Meter> getAllMeters(Area area) {
+        final String column = "id";//NON-NLS
+        Integer areaId = area.getAreaId();
         List<Meter> list = null;
+        Transaction transaction = null;
         try {
+            session = factory.openSession();
             transaction = session.beginTransaction();
-            list = session.createQuery(query).list();
-            transaction.commit();
+            Criteria createCriteria = session.createCriteria(Meter.class);
+            createCriteria.add(Restrictions.eq(column, areaId));
+            list = createCriteria.list();
         } catch (HibernateException e) {
             if (transaction != null) transaction.rollback();
             System.out.println(e);
@@ -42,21 +45,26 @@ public class MeterRepositoryHibernate implements MeterRepository {
         return list;
     }
 
-    @Override
-    public List<Meter> getAllMeters(Area area) {
-        final String query = "from Meter m, AREA_METER_LOOKUP a where m.meter_id = a.meter_id and a.area_id = 321 ";
-        List<Meter> list;
-        list = getMeterQuery(query);
-        return list;
-    }
 
     @Override
     public List<Meter> getOldMeter(Date date) {
-        ResultSet result;
+        List<Meter> list = null;
         java.sql.Date dateSQL = new java.sql.Date(date.getTime());
-        List<Meter> list = new ArrayList<>();
-        String query = "select * from meter where install_date < ?";//NON-NLS
-        list = getMeterQuery(query);
+        String column = "installDate";//NON-NLS
+        Transaction transaction = null;
+        try {
+            session = factory.openSession();
+            transaction = session.beginTransaction();
+            Criteria createCriteria = session.createCriteria(Meter.class);
+            createCriteria.add(Restrictions.le(column, dateSQL));
+            list = createCriteria.list();
+        } catch (HibernateException e) {
+            if (transaction != null) transaction.rollback();
+            System.out.println(e);
+//            LOG.error("Error", e);//NON-NLS
+        } finally {
+            session.close();
+        }
         return list;
     }
 }
