@@ -44,4 +44,18 @@ public class Database {
         BasicDataSource db = createDataSource(url);
         return db.getConnection();
     }
+
+    static BasicDataSource getDataSource() {
+        String url = "NIGHT9";
+        if ("NIGHT9".equals(url)) {
+            url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT9";//NON-NLS
+
+        } else if ("FEAT04".equals(url)) {
+            url = "jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04";//NON-NLS
+
+        }
+
+        return createDataSource(url);
+
+    }
 }
