@@ -4,9 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.co.crowderconsult.area.Area;
-import uk.co.crowderconsult.area.AreaType;
-import uk.co.crowderconsult.meter.Meter;
+import uk.co.crowderconsult.Model.area.Area;
+import uk.co.crowderconsult.Model.area.AreaType;
+import uk.co.crowderconsult.Model.meter.Meter;
 
 import java.util.List;
 

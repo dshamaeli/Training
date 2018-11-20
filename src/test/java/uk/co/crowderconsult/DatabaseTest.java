@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.co.crowderconsult.utility.Database;
+import uk.co.crowderconsult.Model.utility.Database;
 
 import java.sql.*;
 

@@ -3,7 +3,7 @@ package uk.co.crowderconsult;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import uk.co.crowderconsult.meter.MeterType;
+import uk.co.crowderconsult.Model.meter.MeterType;
 
 
 public class MeterTypeTest {

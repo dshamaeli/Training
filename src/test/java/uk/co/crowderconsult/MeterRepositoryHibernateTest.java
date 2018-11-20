@@ -4,11 +4,11 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import uk.co.crowderconsult.area.Area;
-import uk.co.crowderconsult.area.AreaType;
-import uk.co.crowderconsult.meter.Meter;
-import uk.co.crowderconsult.meter.MeterRepositoryHibernate;
-import uk.co.crowderconsult.utility.Database;
+import uk.co.crowderconsult.Model.area.Area;
+import uk.co.crowderconsult.Model.area.AreaType;
+import uk.co.crowderconsult.Model.meter.Meter;
+import uk.co.crowderconsult.Model.meter.MeterRepositoryHibernate;
+import uk.co.crowderconsult.Model.utility.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

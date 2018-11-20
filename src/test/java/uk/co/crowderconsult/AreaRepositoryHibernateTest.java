@@ -4,9 +4,9 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import uk.co.crowderconsult.area.Area;
-import uk.co.crowderconsult.area.AreaRepositoryHibernate;
-import uk.co.crowderconsult.utility.Database;
+import uk.co.crowderconsult.Model.area.Area;
+import uk.co.crowderconsult.Model.area.AreaRepositoryHibernate;
+import uk.co.crowderconsult.Model.utility.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

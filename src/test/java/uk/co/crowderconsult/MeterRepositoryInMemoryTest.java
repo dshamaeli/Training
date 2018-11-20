@@ -2,11 +2,11 @@ package uk.co.crowderconsult;
 
 import org.junit.Before;
 import org.junit.Test;
-import uk.co.crowderconsult.area.Area;
-import uk.co.crowderconsult.area.AreaType;
-import uk.co.crowderconsult.meter.MeasurementDataType;
-import uk.co.crowderconsult.meter.Meter;
-import uk.co.crowderconsult.meter.MeterRepositoryInMemory;
+import uk.co.crowderconsult.Model.area.Area;
+import uk.co.crowderconsult.Model.area.AreaType;
+import uk.co.crowderconsult.Model.meter.MeasurementDataType;
+import uk.co.crowderconsult.Model.meter.Meter;
+import uk.co.crowderconsult.Model.meter.MeterRepositoryInMemory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
