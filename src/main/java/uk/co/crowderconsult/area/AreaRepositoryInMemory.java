@@ -1,4 +1,4 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.area;
 
 import java.util.ArrayList;
 import java.util.Iterator;

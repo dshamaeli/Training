@@ -1,4 +1,4 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.utility;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
@@ -24,14 +24,13 @@ public class Database {
 
     }
 
-
     /**
      * creates database connection
      *
      * @return statement object to query JDBC
      * @throws SQLException throws exception if it fails to connect
      */
-    static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         String url = "NIGHT9";
         if ("NIGHT9".equals(url)) {
             url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT9";//NON-NLS
@@ -45,7 +44,12 @@ public class Database {
         return db.getConnection();
     }
 
-    static BasicDataSource getDataSource() {
+    /**
+     * gives database connection
+     *
+     * @return database source
+     */
+    public static BasicDataSource getDataSource() {
         String url = "NIGHT9";
         if ("NIGHT9".equals(url)) {
             url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT9";//NON-NLS
@@ -54,8 +58,6 @@ public class Database {
             url = "jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04";//NON-NLS
 
         }
-
         return createDataSource(url);
-
     }
 }

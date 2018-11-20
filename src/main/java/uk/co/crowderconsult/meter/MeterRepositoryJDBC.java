@@ -1,7 +1,8 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.meter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.co.crowderconsult.area.Area;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ public class MeterRepositoryJDBC implements MeterRepository {
     private Connection connection;
 
 
-    MeterRepositoryJDBC(Connection connection) {
+    public MeterRepositoryJDBC(Connection connection) {
         this.connection = connection;
     }
 

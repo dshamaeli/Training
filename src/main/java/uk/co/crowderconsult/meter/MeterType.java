@@ -1,4 +1,4 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.meter;
 
 /**
  * Meter type is a standard network classification for a meter. This provides

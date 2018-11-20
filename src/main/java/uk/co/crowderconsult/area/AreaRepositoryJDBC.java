@@ -1,4 +1,4 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.area;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,7 @@ public class AreaRepositoryJDBC implements AreaRepository {
     private static final Logger LOG = LoggerFactory.getLogger(AreaRepositoryJDBC.class);
     private Connection connection;
 
-    AreaRepositoryJDBC(Connection connection) {
+    public AreaRepositoryJDBC(Connection connection) {
         this.connection = connection;
     }
 

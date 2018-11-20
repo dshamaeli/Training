@@ -1,4 +1,6 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.meter;
+
+import uk.co.crowderconsult.area.Area;
 
 import java.util.ArrayList;
 import java.util.Date;

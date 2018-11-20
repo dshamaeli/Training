@@ -1,8 +1,6 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.area;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -13,7 +11,6 @@ import java.util.List;
  * @author daniel.shamaeli
  */
 public class AreaJdbcTemplate implements AreaRepository {
-    private static final Logger LOG = LoggerFactory.getLogger(AreaJdbcTemplate.class);
     private JdbcTemplate jdbcTemplate;
 
     /**

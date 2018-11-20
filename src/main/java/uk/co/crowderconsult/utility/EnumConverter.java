@@ -1,4 +1,4 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.utility;
 
 import javax.persistence.AttributeConverter;
 

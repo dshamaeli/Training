@@ -1,10 +1,11 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.area;
 
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.co.crowderconsult.meter.Meter;
 
 import java.util.List;
 

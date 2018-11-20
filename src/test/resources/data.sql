@@ -3,7 +3,7 @@
 ALTER USER nb quota unlimited on USERS;
 
 --Add row to area
-insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','y');
+insert into area (area_id,name,area_type,is_active) values (321,'Quality Area 1','QUALITY','Y');
 insert into area (area_id,name,area_type,is_active) values (987,'Quality Area 2','QUALITY','N');
 insert into area (area_id,name,area_type,is_active) values (556,'Hydraulic Area 1','HYDRAULIC','Y');
 insert into area (area_id,name,area_type,is_active) values (864,'Hydraulic Area 1','HYDRAULIC','Y');

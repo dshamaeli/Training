@@ -1,4 +1,4 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.area;
 
 
 import org.springframework.jdbc.core.RowMapper;

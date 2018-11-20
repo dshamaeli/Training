@@ -1,4 +1,8 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.area;
+
+import uk.co.crowderconsult.meter.Meter;
+import uk.co.crowderconsult.utility.AreaTypeConverter;
+import uk.co.crowderconsult.utility.BooleanYesNoConverter;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.area;
 
 import java.util.Date;
 
 /**
- * Area Summaries are daily aggregates of Meter Data for all “Flow” Meters that
+ * Area Summaries are daily aggregates of Meter Data for all ï¿½Flowï¿½ Meters that
  * belong to an area.
  *
  * @author daniel.shamaeli
@@ -18,12 +18,12 @@ public class AreaSummary {
 
     /**
      * generates an area summary which is a daily aggregates of Meter Data for
-     * all “Flow” Meters that belong to an area.
+     * all ï¿½Flowï¿½ Meters that belong to an area.
      *
      * @param parentId  ID of parent area
-     * @param totalFlow Total flow of all “Flow” Meters in the parent area
-     * @param minFlow   Minimum flow of all “Flow” Meters in the parent area
-     * @param maxFlow   Maximum flow of all “Flow” Meters in the parent area
+     * @param totalFlow Total flow of all ï¿½Flowï¿½ Meters in the parent area
+     * @param minFlow   Minimum flow of all ï¿½Flowï¿½ Meters in the parent area
+     * @param maxFlow   Maximum flow of all ï¿½Flowï¿½ Meters in the parent area
      */
     public AreaSummary(Integer parentId, Double totalFlow, Double minFlow, Double maxFlow) {
         this.parentId = parentId;

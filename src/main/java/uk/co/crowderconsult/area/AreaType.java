@@ -1,4 +1,4 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.area;
 
 /**
  * Area Summaries are daily aggregates of Meter Data for all �Flow� Meters that

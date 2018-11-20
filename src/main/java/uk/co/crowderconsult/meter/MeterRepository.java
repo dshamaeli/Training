@@ -1,4 +1,6 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.meter;
+
+import uk.co.crowderconsult.area.Area;
 
 import java.util.Date;
 import java.util.List;
@@ -17,10 +19,10 @@ public interface MeterRepository {
 
 
     /**
-     * Finds “old” meters installed before a provided date
+     * Finds ï¿½oldï¿½ meters installed before a provided date
      *
      * @param date specific date after meters installation
-     * @return List “old” meters installed before a provided date
+     * @return List ï¿½oldï¿½ meters installed before a provided date
      */
     List<Meter> getOldMeter(Date date);
 

@@ -1,4 +1,4 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.area;
 
 import java.util.Date;
 import java.util.List;

@@ -1,4 +1,6 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.utility;
+
+import uk.co.crowderconsult.area.AreaType;
 
 import javax.persistence.AttributeConverter;
 import java.util.EnumSet;

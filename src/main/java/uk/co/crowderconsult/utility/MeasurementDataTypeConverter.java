@@ -1,4 +1,6 @@
-package uk.co.crowderconsult;
+package uk.co.crowderconsult.utility;
+
+import uk.co.crowderconsult.meter.MeasurementDataType;
 
 import javax.persistence.AttributeConverter;
 import java.util.EnumSet;

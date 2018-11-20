@@ -6,6 +6,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import uk.co.crowderconsult.area.Area;
+import uk.co.crowderconsult.area.AreaType;
+import uk.co.crowderconsult.meter.Meter;
+import uk.co.crowderconsult.meter.MeterRepositoryJDBC;
+import uk.co.crowderconsult.utility.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
