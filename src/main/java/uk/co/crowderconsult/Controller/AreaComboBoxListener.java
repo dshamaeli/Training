@@ -15,6 +15,7 @@ public class AreaComboBoxListener implements ActionListener {
     private JLabel numberOfRows;
     private AreaUi view;
 
+
     AreaComboBoxListener(AreaUi areaUi) {
         this.status = areaUi.getStatus();
         this.numberOfRows = areaUi.getNumberOfResults();
@@ -30,6 +31,7 @@ public class AreaComboBoxListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         JComboBox comboBox = (JComboBox) e.getSource();
         Object selected = comboBox.getSelectedItem();
         if (selected.equals("All AREAS")) {
@@ -50,11 +52,13 @@ public class AreaComboBoxListener implements ActionListener {
 
             JComboBox areaComboBox = view.getAreaComboBox();
             for (Area area : areaList) {
-                areaComboBox.addItem(area);
+                areaComboBox.addItem(new AreaWrapper(area));
+
             }
             JFrame frame = view.getFrame();
             frame.add(areaComboBox);
         }
     }
+
 
 }

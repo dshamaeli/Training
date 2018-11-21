@@ -23,7 +23,8 @@ public class MeterComboBoxListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         MeterRepositoryJDBC meterRepo;
         List<Meter> meterList;
-        Area area = (Area) view.getAreaComboBox().getSelectedItem();
+        AreaWrapper areaWrapper = (AreaWrapper) view.getAreaComboBox().getSelectedItem();
+        Area area = areaWrapper.getArea();
         try {
             meterRepo = new MeterRepositoryJDBC(Database.getConnection());
             meterList = meterRepo.getAllMeters(area);
