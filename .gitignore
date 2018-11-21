@@ -47,3 +47,5 @@ gradle/wrapper/gradle-wrapper.jar
 /.idea/
 /src/test/resources/database.~sql
 /src/test/java/uk/co/crowderconsult/test.java
+/src/main/java/uk/co/crowderconsult/Controller/testController.java
+/src/main/java/uk/co/crowderconsult/View/test.java

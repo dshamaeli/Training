@@ -9,7 +9,6 @@ public class AreaController {
     private AreaUi view;
     private AreaJdbcTemplate model;
     private String[] functions = {"All AREAS", "ACTIVE AREAS", "AREA'S METERS"};
-//    private String[] functions = {"Apple", "Peach", "Orange"};
 
     public AreaController(AreaUi view, AreaJdbcTemplate model) {
         this.view = view;
@@ -42,9 +41,9 @@ public class AreaController {
 
     public void initView() {
         view.setComboBox(new JComboBox<String>(functions));
-        view.getHeader().setText("Data");
         view.createAndShowUi();
-        view.getComboBox().addActionListener(new ComboBoxListener(view.getStatus()));
+        view.getComboBox().addActionListener(new AreaComboBoxListener(view));
+        view.getAreaComboBox().addActionListener(new MeterComboBoxListener(view));
     }
 
 
