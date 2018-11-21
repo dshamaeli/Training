@@ -1,6 +1,9 @@
 package uk.co.crowderconsult.View;
 
+import uk.co.crowderconsult.Model.area.Area;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class AreaUi {
     private JFrame frame = new JFrame("Area Repository");
@@ -18,6 +21,17 @@ public class AreaUi {
         areaComboBox.setBounds(300, 50, 150, 20);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        areaComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                String display = "";
+                if (value instanceof Area) {
+                    display = "Area: " + ((Area) value).getAreaId();
+                }
+                return super.getListCellRendererComponent(list, display, index, isSelected, cellHasFocus);
+            }
+        });
 
         JScrollPane scroll = new JScrollPane(status);
         scroll.setBounds(50, 100, 500, 400);

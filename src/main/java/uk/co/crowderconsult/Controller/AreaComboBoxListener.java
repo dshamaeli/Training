@@ -49,11 +49,9 @@ public class AreaComboBoxListener implements ActionListener {
         } else if (selected.equals("AREA'S METERS")) {
             status.setText("");
             List<Area> areaList = getAllAreas();
-
             JComboBox areaComboBox = view.getAreaComboBox();
             for (Area area : areaList) {
-                areaComboBox.addItem(new AreaWrapper(area));
-
+                areaComboBox.addItem(area);
             }
             JFrame frame = view.getFrame();
             frame.add(areaComboBox);
