@@ -1,6 +1,7 @@
 package uk.co.crowderconsult.Model.utility;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -49,15 +50,13 @@ public class Database {
      *
      * @return database source
      */
-    public static BasicDataSource getDataSource() {
+    public static JdbcTemplate getDataSource() {
         String url = "NIGHT9";
         if ("NIGHT9".equals(url)) {
             url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT9";//NON-NLS
-
         } else if ("FEAT04".equals(url)) {
             url = "jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04";//NON-NLS
-
         }
-        return createDataSource(url);
+        return new JdbcTemplate(createDataSource(url));
     }
 }

@@ -1,6 +1,5 @@
 package uk.co.crowderconsult.Model.area;
 
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
@@ -16,23 +15,21 @@ public class AreaJdbcTemplate implements AreaRepository {
     /**
      * creates data source to connect to database
      *
-     * @param dataSource a database
+     * @param jdbcTemplate a database
      */
-    public void setDataSource(BasicDataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public void setDataSource(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
     public List<Area> getAllAreas() {
         String query = "select * from area"; //NON-NLS
-        List<Area> list = jdbcTemplate.query(query, new AreaMapper());
-        return list;
+        return jdbcTemplate.query(query, new AreaMapper());
     }
 
     @Override
     public List<Area> getActiveAreas() {
         String query = "select * from area where upper(is_active)='Y'"; //NON-NLS
-        List<Area> list = jdbcTemplate.query(query, new AreaMapper());
-        return list;
+        return jdbcTemplate.query(query, new AreaMapper());
     }
 }
