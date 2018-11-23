@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author Daniel.shamaeli
  */
-public class AreaRepositoryHibernate implements AreaRepository {
+public class AreaRepositoryHibernate implements AreaRepository, AreaCRUD {
     private static final Logger LOG = LoggerFactory.getLogger(AreaRepositoryHibernate.class);
     final Configuration cfg = new Configuration()
             .addPackage("uk.co.crowderconsult")
@@ -57,5 +57,52 @@ public class AreaRepositoryHibernate implements AreaRepository {
         List<Area> list;
         list = getAreaQuery(column, true);
         return list;
+    }
+
+    @Override
+    public void addArea(Area area) {
+        Session session = factory.openSession();
+        Transaction transaction = null;
+        try {
+            System.out.println("Start Transaction");
+            transaction = session.beginTransaction();
+            session.save(area);
+            transaction.commit();
+            System.out.println("area saved\n" + area);
+        } catch (HibernateException e) {
+            System.out.println("Catch error when add");
+            if (transaction != null) transaction.rollback();
+            System.out.println(e);
+            LOG.error("Error", e);//NON-NLS
+        } finally {
+            System.out.println("save finally ");
+            session.close();
+        }
+    }
+
+    @Override
+    public void editArea(Area area) {
+
+    }
+
+    @Override
+    public void deleteArea(Area area) {
+        Session session = factory.openSession();
+        Transaction transaction = null;
+        try {
+            System.out.println("Start Transaction");
+            transaction = session.beginTransaction();
+            session.delete(area);
+            transaction.commit();
+            System.out.println("area deleted\n" + area);
+        } catch (HibernateException e) {
+            System.out.println("Catch error when delete");
+            if (transaction != null) transaction.rollback();
+            System.out.println(e);
+            LOG.error("Error", e);//NON-NLS
+        } finally {
+            System.out.println("finally finally");
+            session.close();
+        }
     }
 }

@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import uk.co.crowderconsult.Model.area.Area;
 import uk.co.crowderconsult.Model.area.AreaRepositoryHibernate;
+import uk.co.crowderconsult.Model.area.AreaType;
 import uk.co.crowderconsult.Model.utility.Database;
 
 import java.sql.Connection;
@@ -16,6 +17,7 @@ import java.util.List;
 public class AreaRepositoryHibernateTest {
     private AreaRepositoryHibernate areaHibernate = new AreaRepositoryHibernate();
     private List<Area> result = null;
+    Area area = new Area(121, "add Area", AreaType.QUALITY, false);
 
     @BeforeClass
     public static void setUp() throws SQLException {
@@ -62,5 +64,20 @@ public class AreaRepositoryHibernateTest {
     public void getActiveAreas() {
         result = areaHibernate.getActiveAreas();
         Assert.assertEquals(4, result.size());
+    }
+
+    @Test
+    public void testAddArea() {
+
+        areaHibernate.addArea(area);
+    }
+
+    @Test
+    public void testEditArea() {
+    }
+
+    @Test
+    public void testDeleteArea() {
+        areaHibernate.deleteArea(area);
     }
 }

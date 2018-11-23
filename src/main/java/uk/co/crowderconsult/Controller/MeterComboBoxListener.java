@@ -21,6 +21,8 @@ public class MeterComboBoxListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+
         MeterRepositoryJDBC meterRepo;
         List<Meter> meterList;
         Area area = (Area) view.getAreaComboBox().getSelectedItem();

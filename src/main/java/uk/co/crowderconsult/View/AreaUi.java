@@ -10,18 +10,39 @@ public class AreaUi {
     private JLabel numberOfResults = new JLabel();
     private JTextArea status = new JTextArea();
     private JComboBox<String> comboBox = new JComboBox<>();
+    private JComboBox<String> secondComboBox = new JComboBox<>();
     private JComboBox<String> areaComboBox = new JComboBox<>();
-
+    private JButton editButton = new JButton("Edit");
+    private JButton deleteButton = new JButton("Delete");
 
     public void createAndShowUi() {
-        frame.setSize(600, 600);
+        frame.setSize(520, 800);
         numberOfResults.setBounds(50, 75, 200, 20);
         comboBox.setBounds(50, 50, 200, 20);
         areaComboBox.setBounds(300, 50, 150, 20);
+        secondComboBox.setBounds(300, 50, 150, 20);
+        editButton.setBounds(50, 520, 80, 20);
+        deleteButton.setBounds(150, 520, 80, 20);
+
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        areaComboBox.setRenderer(new DefaultListCellRenderer() {
+        areaComboBox.setRenderer(getRenderer());
+        secondComboBox.setRenderer(getRenderer());
+
+        JScrollPane scroll = new JScrollPane(status);
+        scroll.setBounds(50, 100, 400, 400);
+
+        frame.add(comboBox);
+        frame.add(numberOfResults);
+        frame.add(editButton);
+        frame.add(deleteButton);
+        frame.add(scroll);
+        frame.setVisible(true);
+    }
+
+    private DefaultListCellRenderer getRenderer() {
+        return new DefaultListCellRenderer() {
             @Override
             public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 String display = "";
@@ -30,15 +51,7 @@ public class AreaUi {
                 }
                 return super.getListCellRendererComponent(list, display, index, isSelected, cellHasFocus);
             }
-        });
-
-        JScrollPane scroll = new JScrollPane(status);
-        scroll.setBounds(50, 100, 500, 400);
-
-        frame.add(comboBox);
-        frame.add(numberOfResults);
-        frame.add(scroll);
-        frame.setVisible(true);
+        };
     }
 
     public JFrame getFrame() {
@@ -81,5 +94,28 @@ public class AreaUi {
         this.areaComboBox = areaComboBox;
     }
 
+    public JComboBox<String> getSecondComboBox() {
+        return secondComboBox;
+    }
+
+    public void setSecondComboBox(JComboBox<String> secondComboBox) {
+        this.secondComboBox = secondComboBox;
+    }
+
+    public JButton getEditButton() {
+        return editButton;
+    }
+
+    public void setEditButton(JButton editButton) {
+        this.editButton = editButton;
+    }
+
+    public JButton getDeleteButton() {
+        return deleteButton;
+    }
+
+    public void setDeleteButton(JButton deleteButton) {
+        this.deleteButton = deleteButton;
+    }
 }
 

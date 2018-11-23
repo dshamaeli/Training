@@ -44,6 +44,7 @@ public class AreaController {
         view.createAndShowUi();
         view.getComboBox().addActionListener(new AreaComboBoxListener(view));
         view.getAreaComboBox().addActionListener(new MeterComboBoxListener(view));
+        view.getSecondComboBox().addActionListener(new SecondAreaComboBoxListener(view));
     }
 
 

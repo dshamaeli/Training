@@ -26,18 +26,41 @@ public class AreaComboBoxListener implements ActionListener {
         AreaJdbcTemplate areaDb = new AreaJdbcTemplate();
         areaDb.setDataSource(Database.getDataSource());
         List<Area> areaList = areaDb.getAllAreas();
+
         return areaList;
+    }
+
+    private void addAreaToAreaComboBox(List<Area> areaList) {
+        JFrame frame = view.getFrame();
+        frame.remove(view.getSecondComboBox());
+        JComboBox meterComboBox = view.getAreaComboBox();
+        meterComboBox.removeAllItems();
+        frame.add(meterComboBox);
+        for (Area area : areaList) {
+            meterComboBox.addItem(area);
+        }
+    }
+
+    private void addAreaToSecondComboBox(List<Area> areaList) {
+        JFrame frame = view.getFrame();
+        frame.remove(view.getAreaComboBox());
+        JComboBox areaComboBox = view.getSecondComboBox();
+        areaComboBox.removeAllItems();
+        frame.add(areaComboBox);
+        for (Area area : areaList) {
+            areaComboBox.addItem(area);
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         JComboBox comboBox = (JComboBox) e.getSource();
         Object selected = comboBox.getSelectedItem();
         if (selected.equals("All AREAS")) {
             status.setText("");
             List<Area> areaList = getAllAreas();
             numberOfRows.setText("Number of Areas: " + areaList.size());
+            addAreaToSecondComboBox(areaList);
             areaList.stream().forEach(area -> status.setText(status.getText() + "\n" + area.toString()));
         } else if (selected.equals("ACTIVE AREAS")) {
             status.setText("");
@@ -45,16 +68,12 @@ public class AreaComboBoxListener implements ActionListener {
             areaDb.setDataSource(Database.getDataSource());
             List<Area> areaList = areaDb.getActiveAreas();
             numberOfRows.setText("Number of Active Areas: " + areaList.size());
+            addAreaToSecondComboBox(areaList);
             areaList.stream().forEach(area -> status.setText(status.getText() + "\n" + area.toString()));
         } else if (selected.equals("AREA'S METERS")) {
             status.setText("");
             List<Area> areaList = getAllAreas();
-            JComboBox areaComboBox = view.getAreaComboBox();
-            for (Area area : areaList) {
-                areaComboBox.addItem(area);
-            }
-            JFrame frame = view.getFrame();
-            frame.add(areaComboBox);
+            addAreaToAreaComboBox(areaList);
         }
     }
 
