@@ -17,7 +17,7 @@ import java.util.List;
 
 public class AreaJdbcTemplateTest {
     private static final Logger LOG = LoggerFactory.getLogger(AreaRepositoryJDBCTest.class);
-    AreaJdbcTemplate areaDB = new AreaJdbcTemplate();
+    private AreaJdbcTemplate areaDB = new AreaJdbcTemplate();
     private List<Area> result = null;
 
     @BeforeClass
@@ -58,9 +58,8 @@ public class AreaJdbcTemplateTest {
     @Test
     public void getAllAreas() {
         areaDB.setDataSource(Database.getDataSource());
-        Integer id = 321;
         result = areaDB.getAllAreas();
-        Assert.assertEquals(id, result.get(0).getAreaId());
+        Assert.assertEquals(6, result.size());
     }
 
     @Test

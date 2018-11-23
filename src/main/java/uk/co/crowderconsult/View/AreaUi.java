@@ -1,6 +1,5 @@
 package uk.co.crowderconsult.View;
 
-import uk.co.crowderconsult.Controller.testController;
 import uk.co.crowderconsult.Model.area.Area;
 
 import javax.swing.*;
@@ -10,7 +9,6 @@ public class AreaUi {
     private JFrame frame = new JFrame("Area Repository");
     private JLabel numberOfResults = new JLabel();
     private JTextArea status = new JTextArea();
-    ;
     private JComboBox<String> comboBox = new JComboBox<>();
     private JComboBox<String> areaComboBox = new JComboBox<>();
 
@@ -83,34 +81,5 @@ public class AreaUi {
         this.areaComboBox = areaComboBox;
     }
 
-    public static class test extends JFrame {
-        //    private String message;
-
-        test(String message) {
-            //        this.message = message;
-            JTextField text = new JTextField();
-            text.setBounds(75, 100, 250, 40);
-
-            JButton button = new JButton("Find IP");
-            button.setBounds(130, 200, 100, 40);
-
-            JLabel label = new JLabel();
-            label.setBounds(75, 300, 250, 40);
-
-            add(text);
-            add(button);
-            add(label);
-
-            setSize(400, 500);
-            setLayout(null);
-            setVisible(true);
-
-            button.addActionListener(new testController(text, label));
-        }
-
-        public static void main(String[] args) {
-            new test("yahoo");
-        }
-    }
 }
 
