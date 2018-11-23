@@ -13,8 +13,17 @@ import java.sql.SQLException;
  * @author daniel.shamaeli
  */
 public class AreaMapper implements RowMapper<Area> {
+    private static final AreaMapper singleInstance = new AreaMapper();
+
+    private AreaMapper() {
+    }
+
+    public static AreaMapper getInstance() {
+        return singleInstance;
+    }
 
     @Override
+
     public Area mapRow(ResultSet rs, int rowNum) throws SQLException {
         Area area = new Area();
         area.setAreaId(rs.getInt("area_id"));//NON-NLS

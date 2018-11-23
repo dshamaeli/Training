@@ -24,12 +24,12 @@ public class AreaJdbcTemplate implements AreaRepository {
     @Override
     public List<Area> getAllAreas() {
         String query = "select * from area"; //NON-NLS
-        return jdbcTemplate.query(query, new AreaMapper());
+        return jdbcTemplate.query(query, AreaMapper.getInstance());
     }
 
     @Override
     public List<Area> getActiveAreas() {
         String query = "select * from area where upper(is_active)='Y'"; //NON-NLS
-        return jdbcTemplate.query(query, new AreaMapper());
+        return jdbcTemplate.query(query, AreaMapper.getInstance());
     }
 }
