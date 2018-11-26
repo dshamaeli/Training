@@ -19,7 +19,7 @@ public class MeterRepositoryHibernate implements MeterRepository {
     final SessionFactory factory = new Configuration()
             .addPackage("uk.co.crowderconsult")
             .setProperty("hibernate.connection.driver_class", "oracle.jdbc.driver.OracleDriver")
-            .setProperty("hibernate.connection.url", "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT9")
+            .setProperty("hibernate.connection.url", "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5")
             .setProperty("hibernate.connection.username", "nb")
             .setProperty("hibernate.connection.password", "NB")
             .setProperty("hibernate.dialec", "org.hibernate.dialect.Oracle10gDialect")

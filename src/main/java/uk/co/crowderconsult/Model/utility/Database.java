@@ -25,6 +25,16 @@ public class Database {
 
     }
 
+    private static String getUrl(String url) {
+        if ("NIGHT5".equals(url)) {
+            url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT5";//NON-NLS
+
+        } else if ("FEAT04".equals(url)) {
+            url = "jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04";//NON-NLS
+        }
+        return url;
+    }
+
     /**
      * creates database connection
      *
@@ -32,15 +42,8 @@ public class Database {
      * @throws SQLException throws exception if it fails to connect
      */
     public static Connection getConnection() throws SQLException {
-        String url = "NIGHT9";
-        if ("NIGHT9".equals(url)) {
-            url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT9";//NON-NLS
-
-        } else if ("FEAT04".equals(url)) {
-            url = "jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04";//NON-NLS
-
-        }
-
+        String url = "NIGHT5";
+        url = getUrl(url);
         BasicDataSource db = createDataSource(url);
         return db.getConnection();
     }
@@ -51,12 +54,8 @@ public class Database {
      * @return database source
      */
     public static JdbcTemplate getDataSource() {
-        String url = "NIGHT9";
-        if ("NIGHT9".equals(url)) {
-            url = "jdbc:oracle:thin:@CCVMRELEASE:1521:NIGHT9";//NON-NLS
-        } else if ("FEAT04".equals(url)) {
-            url = "jdbc:oracle:thin:@CCVMFEATURE:1521:FEAT04";//NON-NLS
-        }
+        String url = "NIGHT5";
+        url = getUrl(url);
         return new JdbcTemplate(createDataSource(url));
     }
 }
