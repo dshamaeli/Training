@@ -3,8 +3,9 @@ package uk.co.crowderconsult.Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ButtonListener implements ActionListener {
+public class AddButtonListener implements ActionListener {
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         String commmand = e.getActionCommand();
         if (commmand.equals("OK")) {

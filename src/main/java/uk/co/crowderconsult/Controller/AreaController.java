@@ -1,14 +1,17 @@
 package uk.co.crowderconsult.Controller;
 
+import uk.co.crowderconsult.Model.area.Area;
 import uk.co.crowderconsult.Model.area.AreaJdbcTemplate;
 import uk.co.crowderconsult.View.AreaUi;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AreaController {
     private AreaUi view;
     private AreaJdbcTemplate model;
-    private String[] functions = {"All AREAS", "ACTIVE AREAS", "AREA'S METERS"};
+    private String[] functions = {"All AREAS", "ACTIVE AREAS"};
 
     public AreaController(AreaUi view, AreaJdbcTemplate model) {
         this.view = view;
@@ -43,10 +46,17 @@ public class AreaController {
         view.setComboBox(new JComboBox<String>(functions));
         view.createAndShowUi();
         view.getComboBox().addActionListener(new AreaComboBoxListener(view));
-        view.getAreaComboBox().addActionListener(new MeterComboBoxListener(view));
-        view.getSecondComboBox().addActionListener(new SecondAreaComboBoxListener(view));
-    }
 
+        view.getViewAreaList().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent me) {
+                if (me.getClickCount() == 2) {
+                    Area area = view.getViewAreaList().getSelectedValue();
+//                    System.out.println(area);
+                    new MeterController(view).getAllMeter(area);
+                }
+            }
+        });
+    }
 
     public static void main(String[] args) {
         AreaUi view = new AreaUi();

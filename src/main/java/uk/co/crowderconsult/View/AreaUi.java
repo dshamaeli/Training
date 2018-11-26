@@ -1,6 +1,7 @@
 package uk.co.crowderconsult.View;
 
 import uk.co.crowderconsult.Model.area.Area;
+import uk.co.crowderconsult.Model.meter.Meter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,33 +9,38 @@ import java.awt.*;
 public class AreaUi {
     private JFrame frame = new JFrame("Area Repository");
     private JLabel numberOfResults = new JLabel();
-    private JTextArea status = new JTextArea();
+    private DefaultListModel<Area> areaModel = new DefaultListModel<>();
+    private DefaultListModel<Meter> meterModel = new DefaultListModel<>();
+    private JList<Area> viewAreaList = new JList<>();
+    private JList<Meter> viewMeterList = new JList<>();
     private JComboBox<String> comboBox = new JComboBox<>();
-    private JComboBox<String> secondComboBox = new JComboBox<>();
     private JComboBox<String> areaComboBox = new JComboBox<>();
     private JButton editButton = new JButton("Edit");
     private JButton deleteButton = new JButton("Delete");
+    private JButton addButton = new JButton("Add");
+    private JScrollPane scroll = new JScrollPane();
 
     public void createAndShowUi() {
         frame.setSize(520, 800);
         numberOfResults.setBounds(50, 75, 200, 20);
         comboBox.setBounds(50, 50, 200, 20);
         areaComboBox.setBounds(300, 50, 150, 20);
-        secondComboBox.setBounds(300, 50, 150, 20);
-        editButton.setBounds(50, 520, 80, 20);
-        deleteButton.setBounds(150, 520, 80, 20);
+
+        addButton.setBounds(50, 520, 80, 20);
+        editButton.setBounds(150, 520, 80, 20);
+        deleteButton.setBounds(250, 520, 80, 20);
+        scroll.setBounds(50, 100, 400, 400);
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         areaComboBox.setRenderer(getRenderer());
-        secondComboBox.setRenderer(getRenderer());
-
-        JScrollPane scroll = new JScrollPane(status);
-        scroll.setBounds(50, 100, 400, 400);
+        viewAreaList.setCellRenderer(new AreaRenderer());
+        viewMeterList.setCellRenderer(new MeterRenderer());
 
         frame.add(comboBox);
         frame.add(numberOfResults);
+        frame.add(addButton);
         frame.add(editButton);
         frame.add(deleteButton);
         frame.add(scroll);
@@ -70,12 +76,36 @@ public class AreaUi {
         this.numberOfResults = numberOfResults;
     }
 
-    public JTextArea getStatus() {
-        return status;
+    public DefaultListModel<Area> getAreaModel() {
+        return areaModel;
     }
 
-    public void setStatus(JTextArea status) {
-        this.status = status;
+    public void setAreaModel(DefaultListModel<Area> areaModel) {
+        this.areaModel = areaModel;
+    }
+
+    public DefaultListModel<Meter> getMeterModel() {
+        return meterModel;
+    }
+
+    public void setMeterModel(DefaultListModel<Meter> meterModel) {
+        this.meterModel = meterModel;
+    }
+
+    public JList<Area> getViewAreaList() {
+        return viewAreaList;
+    }
+
+    public void setViewAreaList(JList<Area> viewAreaList) {
+        this.viewAreaList = viewAreaList;
+    }
+
+    public JList<Meter> getViewMeterList() {
+        return viewMeterList;
+    }
+
+    public void setViewMeterList(JList<Meter> viewMeterList) {
+        this.viewMeterList = viewMeterList;
     }
 
     public JComboBox<String> getComboBox() {
@@ -94,14 +124,6 @@ public class AreaUi {
         this.areaComboBox = areaComboBox;
     }
 
-    public JComboBox<String> getSecondComboBox() {
-        return secondComboBox;
-    }
-
-    public void setSecondComboBox(JComboBox<String> secondComboBox) {
-        this.secondComboBox = secondComboBox;
-    }
-
     public JButton getEditButton() {
         return editButton;
     }
@@ -116,6 +138,22 @@ public class AreaUi {
 
     public void setDeleteButton(JButton deleteButton) {
         this.deleteButton = deleteButton;
+    }
+
+    public JButton getAddButton() {
+        return addButton;
+    }
+
+    public void setAddButton(JButton addButton) {
+        this.addButton = addButton;
+    }
+
+    public JScrollPane getScroll() {
+        return scroll;
+    }
+
+    public void setScroll(JScrollPane scroll) {
+        this.scroll = scroll;
     }
 }
 

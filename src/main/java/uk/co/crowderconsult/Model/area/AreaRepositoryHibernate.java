@@ -83,6 +83,7 @@ public class AreaRepositoryHibernate implements AreaRepository, AreaCRUD {
     @Override
     public void editArea(Area area) {
 
+
     }
 
     @Override

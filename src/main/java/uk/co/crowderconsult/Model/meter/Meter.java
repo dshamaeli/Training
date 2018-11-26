@@ -112,6 +112,20 @@ public class Meter {
     }
 
     /**
+     * @return meters's name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name set meters name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
      * @return meter's measurement data type
      */
     public MeasurementDataType getMeasurementDataType() {

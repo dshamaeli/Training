@@ -11,15 +11,18 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class AreaComboBoxListener implements ActionListener {
-    private JTextArea status;
+    private JList<Area> viewList;
+    private DefaultListModel<Area> areaModel;
     private JLabel numberOfRows;
     private AreaUi view;
 
 
     AreaComboBoxListener(AreaUi areaUi) {
-        this.status = areaUi.getStatus();
-        this.numberOfRows = areaUi.getNumberOfResults();
-        this.view = areaUi;
+        viewList = areaUi.getViewAreaList();
+        areaModel = areaUi.getAreaModel();
+        numberOfRows = areaUi.getNumberOfResults();
+        view = areaUi;
+
     }
 
     private List<Area> getAllAreas() {
@@ -32,7 +35,6 @@ public class AreaComboBoxListener implements ActionListener {
 
     private void addAreaToAreaComboBox(List<Area> areaList) {
         JFrame frame = view.getFrame();
-        frame.remove(view.getSecondComboBox());
         JComboBox meterComboBox = view.getAreaComboBox();
         meterComboBox.removeAllItems();
         frame.add(meterComboBox);
@@ -41,39 +43,26 @@ public class AreaComboBoxListener implements ActionListener {
         }
     }
 
-    private void addAreaToSecondComboBox(List<Area> areaList) {
-        JFrame frame = view.getFrame();
-        frame.remove(view.getAreaComboBox());
-        JComboBox areaComboBox = view.getSecondComboBox();
-        areaComboBox.removeAllItems();
-        frame.add(areaComboBox);
-        for (Area area : areaList) {
-            areaComboBox.addItem(area);
-        }
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        view.getScroll().setViewportView(viewList);
         JComboBox comboBox = (JComboBox) e.getSource();
         Object selected = comboBox.getSelectedItem();
+        view.getViewAreaList().setModel(areaModel);
         if (selected.equals("All AREAS")) {
-            status.setText("");
+            areaModel.removeAllElements();
             List<Area> areaList = getAllAreas();
             numberOfRows.setText("Number of Areas: " + areaList.size());
-            addAreaToSecondComboBox(areaList);
-            areaList.stream().forEach(area -> status.setText(status.getText() + "\n" + area.toString()));
+            areaList.stream().forEach(area -> areaModel.addElement(area));
         } else if (selected.equals("ACTIVE AREAS")) {
-            status.setText("");
+            areaModel.removeAllElements();
             AreaJdbcTemplate areaDb = new AreaJdbcTemplate();
             areaDb.setDataSource(Database.getDataSource());
             List<Area> areaList = areaDb.getActiveAreas();
             numberOfRows.setText("Number of Active Areas: " + areaList.size());
-            addAreaToSecondComboBox(areaList);
-            areaList.stream().forEach(area -> status.setText(status.getText() + "\n" + area.toString()));
+            areaList.stream().forEach(area -> areaModel.addElement(area));
         } else if (selected.equals("AREA'S METERS")) {
-            status.setText("");
-            List<Area> areaList = getAllAreas();
-            addAreaToAreaComboBox(areaList);
         }
     }
 
