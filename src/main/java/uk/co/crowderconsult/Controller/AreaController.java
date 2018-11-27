@@ -55,8 +55,16 @@ public class AreaController {
         view.getDeleteButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Area area = view.getViewAreaList().getSelectedValue();
-                model.deleteArea(area);
+                JList areaList = view.getViewAreaList();
+                if (!areaList.isSelectionEmpty()) {
+                    Area area = (Area) areaList.getSelectedValue();
+                    model.deleteArea(area);
+                } else {
+                    JOptionPane optionPane = new JOptionPane("Please select an area(s)", JOptionPane.ERROR_MESSAGE);
+                    JDialog dialog = optionPane.createDialog("Delete Area Error");
+                    dialog.setAlwaysOnTop(true);
+                    dialog.setVisible(true);
+                }
             }
         });
 

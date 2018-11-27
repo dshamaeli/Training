@@ -17,6 +17,4 @@ public class AddButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         new AddController(new AddUi(), model).initView();
     }
-
-
 }

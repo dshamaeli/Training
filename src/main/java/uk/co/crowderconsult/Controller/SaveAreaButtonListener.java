@@ -23,10 +23,10 @@ public class SaveAreaButtonListener implements ActionListener {
         try {
             area.setAreaId(Integer.parseInt(view.getId().getText()));
             area.setAreaName(view.getName().getText());
-            area.setIsActive(view.getIsActive().isSelected());
             area.setAreaType((AreaType) view.getComboBox().getSelectedItem());
+            area.setIsActive(view.getIsActive().isSelected());
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("error: " + e);
             new JOptionPane("Please enter the area ID");
         }
         return area;
@@ -36,12 +36,8 @@ public class SaveAreaButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Area area = buildArea();
         System.out.println(area);
-        area = new Area();
-        area.setAreaId(666);
-        area.setAreaName("hello");
-        area.setIsActive(true);
-        area.setAreaType(AreaType.QUALITY);
         model.addArea(area);
+        view.getFrame().dispose();
     }
 }
 

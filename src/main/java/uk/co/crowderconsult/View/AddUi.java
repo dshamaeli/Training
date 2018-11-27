@@ -16,15 +16,18 @@ public class AddUi {
     private JComboBox comboBox;
     private JButton saveButton;
     private JButton cancelButton;
+    private ButtonGroup status;
+
 
     public AddUi() {
         initialise();
     }
 
+
     public void initialise() {
         frame = new JFrame("Add a New Area");
         frame.setBounds(100, 100, 400, 250);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
 
@@ -51,13 +54,17 @@ public class AddUi {
         activation.setBounds(50, 75, 100, 20);
         frame.getContentPane().add(activation);
 
-        JRadioButton isActive = new JRadioButton("Active");
+        isActive = new JRadioButton("Active");
         isActive.setBounds(150, 75, 100, 20);
         frame.getContentPane().add(isActive);
 
-        JRadioButton radioButton_1 = new JRadioButton("Inactive");
-        radioButton_1.setBounds(250, 75, 100, 20);
-        frame.getContentPane().add(radioButton_1);
+        JRadioButton notActive = new JRadioButton("Inactive");
+        notActive.setBounds(250, 75, 100, 20);
+        frame.getContentPane().add(notActive);
+
+        status = new ButtonGroup();
+        status.add(isActive);
+        status.add(notActive);
 
         JLabel lblOccupation = new JLabel("Area Type");
         lblOccupation.setBounds(50, 100, 100, 20);
@@ -117,6 +124,14 @@ public class AddUi {
 
     public void setComboBox(JComboBox comboBox) {
         this.comboBox = comboBox;
+    }
+
+    public ButtonGroup getStatus() {
+        return status;
+    }
+
+    public void setStatus(ButtonGroup status) {
+        this.status = status;
     }
 
     public JButton getSaveButton() {

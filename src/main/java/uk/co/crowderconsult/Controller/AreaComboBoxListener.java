@@ -28,12 +28,10 @@ public class AreaComboBoxListener implements ActionListener {
     private List<Area> getAllAreas() {
         AreaJdbcTemplate areaDb = new AreaJdbcTemplate();
         areaDb.setDataSource(Database.getDataSource());
-        List<Area> areaList = areaDb.getAllAreas();
-
-        return areaList;
+        return areaDb.getAllAreas();
     }
 
-   
+
     @Override
     public void actionPerformed(ActionEvent e) {
         view.getScroll().setViewportView(viewList);
