@@ -4,6 +4,9 @@ import uk.co.crowderconsult.Model.area.AreaType;
 
 import javax.swing.*;
 
+/**
+ * @author daniel.shamaeli
+ */
 public class AddUi {
 
     private JFrame frame;
@@ -11,6 +14,8 @@ public class AddUi {
     private JTextField name;
     private JRadioButton isActive;
     private JComboBox comboBox;
+    private JButton saveButton;
+    private JButton cancelButton;
 
     public AddUi() {
         initialise();
@@ -63,15 +68,15 @@ public class AddUi {
         comboBox.setBounds(150, 100, 150, 20);
         frame.getContentPane().add(comboBox);
 
-        JButton btnSubmit = new JButton("Save");
+        saveButton = new JButton("Save");
 
-        btnSubmit.setBounds(50, 150, 100, 25);
-        frame.getContentPane().add(btnSubmit);
+        saveButton.setBounds(50, 150, 100, 25);
+        frame.getContentPane().add(saveButton);
 
-        JButton btnClear = new JButton("Clear");
+        cancelButton = new JButton("Cancel");
 
-        btnClear.setBounds(200, 150, 100, 25);
-        frame.getContentPane().add(btnClear);
+        cancelButton.setBounds(200, 150, 100, 25);
+        frame.getContentPane().add(cancelButton);
     }
 
     public JFrame getFrame() {
@@ -112,6 +117,22 @@ public class AddUi {
 
     public void setComboBox(JComboBox comboBox) {
         this.comboBox = comboBox;
+    }
+
+    public JButton getSaveButton() {
+        return saveButton;
+    }
+
+    public void setSaveButton(JButton saveButton) {
+        this.saveButton = saveButton;
+    }
+
+    public JButton getCancelButton() {
+        return cancelButton;
+    }
+
+    public void setCancelButton(JButton cancelButton) {
+        this.cancelButton = cancelButton;
     }
 }
 

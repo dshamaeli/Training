@@ -1,25 +1,27 @@
 package uk.co.crowderconsult.Controller;
 
-import uk.co.crowderconsult.Model.area.Area;
 import uk.co.crowderconsult.Model.area.AreaRepositoryHibernate;
-import uk.co.crowderconsult.Model.area.AreaType;
 import uk.co.crowderconsult.View.AddUi;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AddController {
     private AddUi view;
-    private AreaRepositoryHibernate areaRepo = new AreaRepositoryHibernate();
+    private AreaRepositoryHibernate areaRepo;
 
-    public AddController(AddUi view) {
+    public AddController(AddUi view, AreaRepositoryHibernate areaRepo) {
         this.view = view;
+        this.areaRepo = areaRepo;
     }
 
 
-    private void saveArea() {
-        Area area = new Area();
-        area.setAreaId(Integer.parseInt(view.getId().getText()));
-        area.setAreaName(view.getName().getText());
-        area.setIsActive(view.getIsActive().isSelected());
-        area.setAreaType((AreaType) view.getComboBox().getSelectedItem());
-        areaRepo.addArea(area);
+    public void initView() {
+        view.getSaveButton().addActionListener(new SaveAreaButtonListener(view, areaRepo));
+        view.getCancelButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                view.getFrame().dispose();
+            }
+        });
     }
 }

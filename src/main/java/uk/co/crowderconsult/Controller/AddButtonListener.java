@@ -1,21 +1,21 @@
 package uk.co.crowderconsult.Controller;
 
+import uk.co.crowderconsult.Model.area.AreaRepositoryHibernate;
 import uk.co.crowderconsult.View.AddUi;
-import uk.co.crowderconsult.View.AreaUi;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddButtonListener implements ActionListener {
-    private AreaUi view;
+    private AreaRepositoryHibernate model;
 
-    public AddButtonListener(AreaUi view) {
-        this.view = view;
+    public AddButtonListener(AreaRepositoryHibernate model) {
+        this.model = model;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        new AddUi();
+        new AddController(new AddUi(), model).initView();
     }
 
 
