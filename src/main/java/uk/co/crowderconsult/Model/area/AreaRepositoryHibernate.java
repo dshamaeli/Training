@@ -82,7 +82,23 @@ public class AreaRepositoryHibernate implements AreaRepository, AreaCRUD {
 
     @Override
     public void editArea(Area area) {
-
+        Session session = factory.openSession();
+        Transaction transaction = null;
+        try {
+            System.out.println("Start Transaction");
+            transaction = session.beginTransaction();
+            session.update(area);
+            transaction.commit();
+            System.out.println("area deleted\n" + area);
+        } catch (HibernateException e) {
+            System.out.println("Catch error when delete");
+            if (transaction != null) transaction.rollback();
+            System.out.println(e);
+            LOG.error("Error", e);//NON-NLS
+        } finally {
+            System.out.println("finally finally");
+            session.close();
+        }
 
     }
 

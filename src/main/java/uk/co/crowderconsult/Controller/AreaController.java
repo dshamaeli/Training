@@ -67,6 +67,7 @@ public class AreaController {
                 }
             }
         });
+        view.getEditButton().addActionListener(new EditButtonActionListener(view, model));
 
         view.getViewAreaList().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
