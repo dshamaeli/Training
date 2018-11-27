@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * @author daniel.shamaeli
+ */
 public class AreaController {
     private AreaUi view;
     private AreaJdbcTemplate model;
@@ -46,12 +49,12 @@ public class AreaController {
         view.setComboBox(new JComboBox<String>(functions));
         view.createAndShowUi();
         view.getComboBox().addActionListener(new AreaComboBoxListener(view));
+        view.getAddButton().addActionListener(new AddButtonListener(view));
 
         view.getViewAreaList().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
                 if (me.getClickCount() == 2) {
                     Area area = view.getViewAreaList().getSelectedValue();
-//                    System.out.println(area);
                     new MeterController(view).getAllMeter(area);
                 }
             }

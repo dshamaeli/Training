@@ -21,7 +21,7 @@ public class AreaUi {
     private JScrollPane scroll = new JScrollPane();
 
     public void createAndShowUi() {
-        frame.setSize(520, 800);
+        frame.setSize(400, 600);
         numberOfResults.setBounds(50, 75, 200, 20);
         comboBox.setBounds(50, 50, 200, 20);
         areaComboBox.setBounds(300, 50, 150, 20);
@@ -29,7 +29,7 @@ public class AreaUi {
         addButton.setBounds(50, 520, 80, 20);
         editButton.setBounds(150, 520, 80, 20);
         deleteButton.setBounds(250, 520, 80, 20);
-        scroll.setBounds(50, 100, 400, 400);
+        scroll.setBounds(50, 100, 300, 400);
 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

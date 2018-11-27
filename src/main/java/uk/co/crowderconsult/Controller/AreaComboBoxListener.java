@@ -33,17 +33,7 @@ public class AreaComboBoxListener implements ActionListener {
         return areaList;
     }
 
-    private void addAreaToAreaComboBox(List<Area> areaList) {
-        JFrame frame = view.getFrame();
-        JComboBox meterComboBox = view.getAreaComboBox();
-        meterComboBox.removeAllItems();
-        frame.add(meterComboBox);
-        for (Area area : areaList) {
-            meterComboBox.addItem(area);
-        }
-    }
-
-
+   
     @Override
     public void actionPerformed(ActionEvent e) {
         view.getScroll().setViewportView(viewList);
